@@ -1,11 +1,9 @@
 package com.farmbusiness.extension
 
-import com.farmbusiness.controller.model.AboutModel
-import com.farmbusiness.controller.model.FaqModel
-import com.farmbusiness.controller.model.PrivacyPolicyModel
-import com.farmbusiness.controller.model.TermsOfUseModel
+import com.farmbusiness.controller.model.*
 import com.farmbusiness.controller.request.*
 import com.farmbusiness.controller.response.*
+import com.farmbusiness.enums.Role
 import org.springframework.data.domain.Page
 
 fun PostAboutRequest.toAboutModel(): AboutModel {
@@ -14,7 +12,7 @@ fun PostAboutRequest.toAboutModel(): AboutModel {
     )
 }
 
-fun PutAboutRequest.toAboutModel():AboutModel {
+fun PutAboutRequest.toAboutModel(): AboutModel {
     return AboutModel(
         about = this.about
     )
@@ -23,6 +21,20 @@ fun PutAboutRequest.toAboutModel():AboutModel {
 fun PostPrivacyPolicyRequest.toPrivacyPolicyModel(): PrivacyPolicyModel {
     return PrivacyPolicyModel(
         privacyPolicy = this.privacyPolicy
+    )
+}
+
+fun PostUsersRequest.toUsersModel(): UsersModel {
+    return UsersModel(
+        firstName = this.firstName,
+        cpf = this.cpf,
+        email = this.email,
+        password = this.password,
+        company = this.company,
+        fantasyName = this.fantasyName,
+        cnpj = this.cnpj,
+        phone = this.phone,
+        roles = setOf(if(this.type == "buyer") Role.BUYER else Role.SELLER)
     )
 }
 
