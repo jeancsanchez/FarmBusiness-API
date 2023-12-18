@@ -6,11 +6,13 @@ import com.farmbusiness.controller.request.PostUsersRequest
 import com.farmbusiness.extension.toUsersModel
 import com.farmbusiness.service.UsersService
 import org.springframework.http.HttpStatus
+import org.springframework.http.ResponseEntity
 import org.springframework.security.access.prepost.PreAuthorize
 import org.springframework.security.config.annotation.authentication.configuration.EnableGlobalAuthentication
 import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder
 import org.springframework.web.bind.annotation.*
+import java.net.URI
 import javax.validation.Valid
 
 @RestController
@@ -22,8 +24,12 @@ class UsersController(
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
-    fun create(@RequestBody @Valid request: PostUsersRequest) {
+    fun create(@RequestBody @Valid request: PostUsersRequest): ResponseEntity<Unit> {
         usersService.create(request.toUsersModel())
+
+        return ResponseEntity
+            .status(HttpStatus.CREATED)
+            .build()
     }
 
     @GetMapping("/{id}")

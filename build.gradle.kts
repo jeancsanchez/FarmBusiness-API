@@ -37,7 +37,8 @@ dependencies {
 
 	testImplementation("org.springframework.boot:spring-boot-starter-test")
 	testImplementation("io.mockk:mockk:1.12.0")
-
+	implementation("junit:junit:4.13.1")
+	testRuntimeOnly("com.h2database:h2")
 }
 
 tasks.withType<KotlinCompile> {

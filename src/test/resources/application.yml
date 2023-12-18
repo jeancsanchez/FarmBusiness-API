@@ -1,0 +1,31 @@
+spring:
+  h2:
+    console:
+      enabled: true
+      path: /h2
+  datasource:
+    url: jdbc:h2:mem:test;DB_CLOSE_DELAY=-1;DATABASE_TO_UPPER=false
+    username: sa
+    password:
+    driverClassName: org.h2.Driver
+  jpa:
+    defer-datasource-initialization: true
+    properties:
+      hibernate:
+        dialect : org.hibernate.dialect.H2Dialect
+        ddl-auto: create
+
+server:
+  error:
+    include-stacktrace: never
+
+jwt:
+  secret: 50b73bb0-38b1-11ee-be56-0242ac120002
+  expiration: 999999
+
+logging:
+  level:
+    root: ERROR
+    org.springframework.web: DEBUG
+    com.howtodoinjava: DEBUG
+    org.hibernate: ERROR
