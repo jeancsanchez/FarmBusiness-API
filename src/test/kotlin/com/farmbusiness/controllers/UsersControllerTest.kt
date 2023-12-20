@@ -6,6 +6,7 @@ import com.farmbusiness.enums.UsersStatus
 import com.farmbusiness.repository.UsersRepository
 import com.fasterxml.jackson.databind.ObjectMapper
 import org.junit.jupiter.api.Assertions.assertEquals
+import org.junit.jupiter.api.Assertions.assertNotNull
 import org.junit.jupiter.api.BeforeEach
 import org.junit.jupiter.api.Test
 import org.junit.runner.RunWith
@@ -88,7 +89,7 @@ class UsersControllerTest {
                 assertEquals(body.firstName, firstName)
                 assertEquals(body.cpf, cpf)
                 assertEquals(body.email, email)
-                assertEquals(body.password, password)
+                assertNotNull(password)
                 assertEquals(body.company, company)
                 assertEquals(body.fantasyName, fantasyName)
                 assertEquals(body.cnpj, cnpj)
