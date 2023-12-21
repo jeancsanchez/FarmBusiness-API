@@ -1,16 +1,21 @@
 spring:
+  config:
+    name: staging
+    profiles:
+      active: staging
+
   properties:
     hibernate:
       format_sql: true
 
   datasource:
-    url: jdbc:mysql://localhost:3306/farmbusiness?createDatabaseIfNotExist=true
-    username: root
-    password: rootadmin
+    url: ${DATABASE_URL}
+    username: ${DATABASE_USER}
+    password: ${DATABASE_PASSWORD}
 
   jpa:
     defer-datasource-initialization: true
-    show-sql: true
+      show-sql: true
 
 server:
   error:
@@ -22,6 +27,8 @@ logging:
     org.springframework.web: DEBUG
     com.howtodoinjava: DEBUG
     org.hibernate: ERROR
+
 jwt:
-  secret: 123456
+  secret: ${JWT_SECRET}
   expiration: 999999
+

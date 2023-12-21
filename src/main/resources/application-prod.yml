@@ -1,5 +1,29 @@
 spring:
+  config:
+    name: prod
+    profiles:
+      active: prod
+
   datasource:
-    url: jdbc:mysql://localhost:3306/farmbusinessprod?createDatabaseIfNotExist=true
-    username: root
-    password: root
+    url: ${DATABASE_URL}
+    username: ${DATABASE_USER}
+    password: ${DATABASE_PASSWORD}
+
+  jpa:
+    hibernate:
+      ddl-auto: update
+
+  jackson:
+    default-property-inclusion: non_ null
+
+server:
+  ssl:
+    enabled: true
+    key-store: /folder/file.jks
+    key-store-password: 123456
+    keyStoreType: jks
+    key-alias: somealias
+
+jwt:
+  secret: ${JWT_SECRET}
+  expiration: 999999

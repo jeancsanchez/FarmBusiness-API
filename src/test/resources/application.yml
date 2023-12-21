@@ -1,13 +1,19 @@
 spring:
+  properties:
+    hibernate:
+      format_sql: true
+
   h2:
     console:
       enabled: true
       path: /h2
+
   datasource:
     url: jdbc:h2:mem:test;DB_CLOSE_DELAY=-1;DATABASE_TO_UPPER=false
     username: sa
     password:
     driverClassName: org.h2.Driver
+
   jpa:
     defer-datasource-initialization: true
     show-sql: true
@@ -21,7 +27,7 @@ server:
     include-stacktrace: never
 
 jwt:
-  secret: 50b73bb0-38b1-11ee-be56-0242ac120002
+  secret: 123456
   expiration: 999999
 
 logging:
