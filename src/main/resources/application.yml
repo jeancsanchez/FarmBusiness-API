@@ -12,6 +12,9 @@ spring:
     defer-datasource-initialization: true
     show-sql: true
 
+  mvc:
+    log-request-details: true
+
 server:
   error:
     include-stacktrace: never
@@ -22,6 +25,7 @@ logging:
     org.springframework.web: DEBUG
     com.howtodoinjava: DEBUG
     org.hibernate: ERROR
+
 jwt:
   secret: 123456
   expiration: 999999

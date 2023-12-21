@@ -9,9 +9,9 @@ spring:
       format_sql: true
 
   datasource:
-    url: ${DATABASE_URL}
-    username: ${DATABASE_USER}
-    password: ${DATABASE_PASSWORD}
+    url: jdbc:mysql://root:aggg5hF532adG6-hDcFACA-fFFGg6ae1@mysql.railway.internal:3306/railway
+    username: root
+    password: aggg5hF532adG6-hDcFACA-fFFGg6ae1
 
   jpa:
     defer-datasource-initialization: true
@@ -29,6 +29,6 @@ logging:
     org.hibernate: ERROR
 
 jwt:
-  secret: ${JWT_SECRET}
+  secret: 50b73bb0-38b1-11ee-be56-0242ac120002
   expiration: 999999
 
