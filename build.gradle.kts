@@ -37,7 +37,7 @@ tasks.register( "runProd") {
 	description = "Running PROD"
 	doFirst {
 		tasks.bootRun.configure {
-			systemProperty("spring.profiles.active", "staging")
+			systemProperty("spring.profiles.active", "prod")
 		}
 	}
 	finalizedBy("bootRun")
