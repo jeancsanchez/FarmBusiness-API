@@ -14,7 +14,6 @@ version = "0.0.1-SNAPSHOT"
 java.sourceCompatibility = JavaVersion.VERSION_11
 
 tasks.register( "runDev") {
-		description = "Running DEV"
 		doFirst {
 			tasks.bootRun.configure {
 				systemProperty("spring.profiles.active", "dev")
@@ -24,7 +23,6 @@ tasks.register( "runDev") {
 }
 
 tasks.register( "runStaging") {
-	description = "Running STAGING"
 	doFirst {
 		tasks.bootRun.configure {
 			systemProperty("spring.profiles.active", "staging")
@@ -34,7 +32,6 @@ tasks.register( "runStaging") {
 }
 
 tasks.register( "runProd") {
-	description = "Running PROD"
 	doFirst {
 		tasks.bootRun.configure {
 			systemProperty("spring.profiles.active", "prod")
