@@ -59,7 +59,7 @@ class AuthenticationFilter(
         }
         val data = LoginResponse(
             token = token,
-            userData = user
+            userData = user?.copy(password = "")
         )
 
         response.addHeader(HttpHeaders.AUTHORIZATION, "Bearer $token")
