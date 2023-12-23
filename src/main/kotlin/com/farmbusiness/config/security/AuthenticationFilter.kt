@@ -1,9 +1,13 @@
 package com.farmbusiness.config.security
 
+import com.farmbusiness.controller.model.UsersModel
 import com.farmbusiness.controller.request.LoginRequest
 import com.farmbusiness.exception.AuthenticationException
 import com.farmbusiness.repository.UsersRepository
+import com.fasterxml.jackson.databind.ObjectMapper
 import com.fasterxml.jackson.module.kotlin.jacksonObjectMapper
+import org.springframework.http.HttpHeaders
+import org.springframework.http.MediaType
 import org.springframework.security.authentication.AuthenticationManager
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken
 import org.springframework.security.core.Authentication
@@ -37,6 +41,11 @@ class AuthenticationFilter(
         }
     }
 
+    private data class LoginResponse(
+        val token: String?,
+        val userData: UsersModel?
+    )
+
     override fun successfulAuthentication(
         request: HttpServletRequest,
         response: HttpServletResponse,
@@ -44,15 +53,20 @@ class AuthenticationFilter(
         authResult: Authentication
     ) {
         val id = (authResult.principal as UserCustomDetails).id
-        val user = id?.let { usersRepository.findById(it) }
+        val user = id?.let { usersRepository.findById(it).get() }
         val token = id?.let {
             jwtUtil.generateToken(id)
         }
-        response.addHeader("Authorization", "Bearer $token")
-        response.contentType = "application/json"
+        val data = LoginResponse(
+            token = token,
+            userData = user
+        )
+
+        response.addHeader(HttpHeaders.AUTHORIZATION, "Bearer $token")
+        response.contentType = MediaType.APPLICATION_JSON_VALUE
         response.characterEncoding = "UTF-8"
         response.writer.write(
-            "{\"Token\":\"$token\", \"Token\":\"$token\"}"
+            ObjectMapper().writeValueAsString(data)
         )
     }
 }
