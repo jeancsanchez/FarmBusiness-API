@@ -1,6 +1,5 @@
 package com.farmbusiness.config
 
-import com.farmbusiness.config.security.AuthenticationFilter
 import com.farmbusiness.config.security.AuthorizationFilter
 import com.farmbusiness.config.security.JwtUtil
 import com.farmbusiness.enums.Role
@@ -9,6 +8,7 @@ import com.farmbusiness.service.UserDetailsCustomService
 import org.springframework.context.annotation.Bean
 import org.springframework.context.annotation.Configuration
 import org.springframework.http.HttpMethod
+import org.springframework.security.authentication.AuthenticationManager
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder
 import org.springframework.security.config.annotation.web.builders.HttpSecurity
 import org.springframework.security.config.annotation.web.builders.WebSecurity
@@ -16,9 +16,11 @@ import org.springframework.security.config.annotation.web.configuration.EnableWe
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter
 import org.springframework.security.config.http.SessionCreationPolicy
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder
+import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter
 import org.springframework.web.cors.CorsConfiguration
 import org.springframework.web.cors.UrlBasedCorsConfigurationSource
 import org.springframework.web.filter.CorsFilter
+
 
 @Configuration
 @EnableWebSecurity
@@ -26,14 +28,20 @@ class SecurityConfig(
     private val usersRepository: UsersRepository,
     private val userDetails: UserDetailsCustomService,
     private val jwtUtil: JwtUtil
-): WebSecurityConfigurerAdapter() {
+) : WebSecurityConfigurerAdapter() {
 
     private val publicPostMatchers = arrayOf(
-        "/users"
+        "/users",
+        "/login"
     )
 
     private val adminMatchers = arrayOf(
         "/admin/**"
+    )
+
+    private val swaggerMatchers = arrayOf(
+        "/v2/api-docs", "/v3/api-docs", "/configuration/ui", "/swagger-resources/**", "/configuration/security",
+        "/swagger-ui/**", "/webjars/**", "/csrf/**"
     )
 
     override fun configure(auth: AuthenticationManagerBuilder) {
@@ -44,18 +52,23 @@ class SecurityConfig(
         http.cors().and().csrf().disable()
 
         http.authorizeRequests()
-            .antMatchers(HttpMethod.POST, *publicPostMatchers).permitAll()
             .antMatchers(*adminMatchers).hasAuthority(Role.ADMIN.description)
             .anyRequest().authenticated()
-        http.addFilter(AuthenticationFilter(authenticationManager(), usersRepository, jwtUtil))
-        http.addFilter(AuthorizationFilter(authenticationManager(), userDetails, jwtUtil))
-        http.sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS)
+            .and()
+            .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS)
+            .and()
+            .addFilter(AuthorizationFilter(authenticationManager(), userDetails, jwtUtil))
     }
 
     override fun configure(web: WebSecurity) {
         web.ignoring()
-            .antMatchers("/v2/api-docs", "/v3/api-docs", "/configuration/ui", "/swagger-resources/**", "/configuration/security",
-                "/swagger-ui/**", "/webjars/**", "/csrf/**")
+            .antMatchers(*swaggerMatchers)
+            .antMatchers(HttpMethod.POST, *publicPostMatchers)
+    }
+
+    @Bean
+    override fun authenticationManagerBean(): AuthenticationManager {
+        return super.authenticationManagerBean()
     }
 
     @Bean

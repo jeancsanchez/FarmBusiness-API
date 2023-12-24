@@ -1,6 +1,8 @@
 package com.farmbusiness.controller.request
 
+import javax.validation.constraints.NotNull
+
 data class LoginRequest(
-    val emailOrCpfOrCnpj: String,
-    val password: String
+    @NotNull val emailOrCpfOrCnpj: String,
+    @NotNull val password: String
 )
