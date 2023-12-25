@@ -11,8 +11,9 @@ import javax.validation.constraints.NotBlank
  * Jesus loves you.
  */
 @Suppress("SpellCheckingInspection")
-@Entity(name = "products")
-data class ProductModel (
+@Entity
+@Table(name = "products")
+class ProductModel (
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     var id: Int? = null,

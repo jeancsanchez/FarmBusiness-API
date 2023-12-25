@@ -9,8 +9,9 @@ import javax.validation.constraints.NotBlank
  * Jesus loves you.
  */
 
-@Entity(name = "images")
-data class ProductImageModel(
+@Entity
+@Table(name = "product_images")
+class ProductImageModel(
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
