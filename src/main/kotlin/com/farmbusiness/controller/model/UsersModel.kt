@@ -3,7 +3,9 @@ package com.farmbusiness.controller.model
 import com.farmbusiness.enums.Role
 import com.farmbusiness.enums.UsersStatus
 import javax.persistence.*
+import javax.validation.constraints.Email
 
+@Suppress("SpellCheckingInspection")
 @Entity(name = "users")
 data class UsersModel(
 
@@ -18,6 +20,7 @@ data class UsersModel(
     var cpf: String? = null,
 
     @Column
+    @Email(message = "Email inválido")
     var email: String,
 
     @Column
