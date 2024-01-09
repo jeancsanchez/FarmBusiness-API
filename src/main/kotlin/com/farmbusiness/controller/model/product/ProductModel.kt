@@ -1,5 +1,6 @@
-package com.farmbusiness.controller.model
+package com.farmbusiness.controller.model.product
 
+import com.farmbusiness.controller.model.ProductImageModel
 import java.util.*
 import javax.persistence.*
 import javax.validation.constraints.Min
@@ -14,6 +15,7 @@ import javax.validation.constraints.NotBlank
 @Entity
 @Table(name = "products")
 class ProductModel (
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     var id: Int? = null,
@@ -31,22 +33,18 @@ class ProductModel (
     @Column
     @OneToMany(cascade = [CascadeType.ALL], orphanRemoval = true)
     @JoinColumn(name = "product_id")
-    var images: List<ProductImageModel>?,
+    var images: List<ProductImageModel>? = emptyList(),
 
-    // TODO
-//    @Column
-//    var freight: String,
-
-
-    // TODO
-//    @Column
-//    var dicount: String,
+    @Column
+    @OneToMany
+    @JoinColumn(name = "product_id")
+    var categories: List<CategoryModel>? = emptyList(),
 
     @Column
     var code: String?,
 
     @Column
-    var createdAt: Date,
+    var createdAt: Date? = Date(),
 
     @Column
     @NotBlank

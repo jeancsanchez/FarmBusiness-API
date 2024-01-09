@@ -76,7 +76,9 @@ class ProductControllerTest {
             shelfLifeMillis = expectedShelfLife.time,
             batch = "FE1213435",
             unitPrice = 3.4,
-            totalItems = 2
+            totalItems = 2,
+            categoryId = 1,
+            subCategoryId = 1
         )
 
 
@@ -100,7 +102,7 @@ class ProductControllerTest {
                 assertEquals(body.code, code)
                 assertEquals(
                     Date().set(second = 0).toBRFormat(),
-                    createdAt.set(second = 0).toBRFormat()
+                    createdAt?.set(second = 0)?.toBRFormat()
                 )
                 assertEquals(expectedShelfLife.toBRFormat(), shelfLife.toBRFormat())
                 assertEquals(body.batch, batch)

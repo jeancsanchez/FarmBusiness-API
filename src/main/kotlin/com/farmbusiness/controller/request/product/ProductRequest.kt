@@ -1,9 +1,8 @@
 package com.farmbusiness.controller.request.product
 
-import com.farmbusiness.controller.model.ProductImageModel
-import com.farmbusiness.controller.model.ProductModel
+import com.farmbusiness.controller.model.product.ProductModel
 import com.farmbusiness.extension.toDate
-import java.util.*
+import javax.validation.constraints.NotBlank
 
 /**
  * @author @jeancsanchez
@@ -13,21 +12,17 @@ import java.util.*
 
 data class ProductRequest(
     val id: Int? = null,
-    val title: String,
+    @NotBlank(message = "title is required") val title: String,
     val description: String,
     val presentation: String,
-    val images: List<ProductImageModel>?,
+    val categoryId: Int?,
+    @NotBlank(message = "Subcategory is required") val subCategoryId: Int,
+    val images: List<String>?, // base64
     val code: String?,
     val shelfLifeMillis: Long,
     val batch: String,
     val unitPrice: Double,
     val totalItems: Int
-
-    // TODO
-//    val freight: String,
-
-    // TODO
-//    val dicount: String,
 ) {
     fun toModel(): ProductModel =
         ProductModel(
@@ -35,9 +30,7 @@ data class ProductRequest(
             title = title,
             description = description,
             presentation = presentation,
-            images = images,
             code = code,
-            createdAt = Date(), // now
             shelfLife = shelfLifeMillis.toDate(),
             batch = batch,
             unitPrice = unitPrice,

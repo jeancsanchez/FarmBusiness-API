@@ -17,6 +17,13 @@ spring:
     defer-datasource-initialization: true
     show-sql: true
 
+  mvc:
+    log-request-details: true
+    static-path-pattern: /static/**
+
+  resources:
+    static-locations: classpath:/static/
+
 server:
   error:
     include-stacktrace: never
