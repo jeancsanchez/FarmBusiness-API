@@ -15,6 +15,7 @@ spring:
   mvc:
     log-request-details: true
     static-path-pattern: /static/**
+    throw-exception-if-no-handler-found: true
 
   resources:
     static-locations: classpath:/static/

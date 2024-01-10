@@ -35,10 +35,9 @@ class ProductModel (
     @JoinColumn(name = "product_id")
     var images: List<ProductImageModel>? = emptyList(),
 
-    @Column
-    @OneToMany
-    @JoinColumn(name = "product_id")
-    var categories: List<CategoryModel>? = emptyList(),
+    @ManyToOne
+    @JoinColumn(name = "subcategory_id")
+    var subcategory: SubCategoryModel?,
 
     @Column
     var code: String?,

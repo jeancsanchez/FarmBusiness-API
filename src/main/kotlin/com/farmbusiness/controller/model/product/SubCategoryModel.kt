@@ -9,7 +9,7 @@ import javax.validation.constraints.NotBlank
  * Jesus loves you.
  */
 @Entity
-@Table(name = "categories")
+@Table(name = "subcategories")
 class SubCategoryModel(
 
     @Id
@@ -19,4 +19,12 @@ class SubCategoryModel(
     @Column
     @NotBlank
     var title: String,
+
+    @ManyToOne
+    @JoinColumn(name = "category_id")
+    var category: CategoryModel,
+
+    @OneToMany(cascade = [CascadeType.ALL], orphanRemoval = true)
+    @JoinColumn(name = "subcategory_id")
+    val products: MutableList<ProductModel> = mutableListOf()
 )

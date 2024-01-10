@@ -4,12 +4,8 @@ import com.farmbusiness.controller.model.ProductImageModel
 import com.farmbusiness.controller.model.product.ProductModel
 import com.farmbusiness.repository.CategoryRepository
 import com.farmbusiness.repository.ProductRepository
-import com.farmbusiness.repository.SubCategoryRepository
 import com.farmbusiness.utils.ImageUtils
-import org.springframework.beans.factory.annotation.Value
-import org.springframework.core.io.Resource
 import org.springframework.stereotype.Service
-import java.awt.image.BufferedImage
 import java.io.File
 import java.nio.file.Files
 import java.nio.file.Path
@@ -25,50 +21,40 @@ import java.util.*
 @Service
 class ProductService(
     private val productRepository: ProductRepository,
-    private val categoryRepository: CategoryRepository,
-    private val subCategoryRepository: SubCategoryRepository
+    private val categoryRepository: CategoryRepository
 ) {
-    @Value("classpath:/")
-    private val resource: Resource? = null
 
     fun create(
         product: ProductModel,
         images64: List<String>?,
-        categoryId: Int?,
+        categoryId: Int,
         subCategoryId: Int,
         hostUrl: String,
-    ) {
-        val images = arrayListOf<ProductImageModel>()
+    ): ProductModel {
+        product.images = images64?.toImages(hostUrl)
+        product.subcategory = categoryRepository.findById(categoryId)
+            .orElseThrow()
+            .subCategories
+            .find { it.id == subCategoryId }
 
-        if (images64?.isNotEmpty() == true) {
-            images64.forEach { item ->
+        return productRepository.save(product)
+    }
+
+    private fun List<String>.toImages(hostUrl: String): List<ProductImageModel> {
+        if (isNotEmpty()) {
+            return map { item ->
                 ProductImageModel(
                     imageUrl = item
                         .decodeAndSaveImage()
                         .toImageUrl(hostUrl = hostUrl)
-                ).also {
-                    images.add(it)
-                }
+                )
             }
         }
 
-        product.images = images
-
-//        categoryRepository.findById(categoryId!!)
-//            .get()
-//            .also {
-//                product.categories = product.categories?.toMutableList()?.run {
-//                    add(it)
-//                    this
-//                }
-//            }
-
-        productRepository.save(product)
+        return emptyList()
     }
 
-
     private fun String.decodeAndSaveImage(): String {
-        var image: BufferedImage? = null
         var base64 = this
 
         if (base64.contains("data:image")) {

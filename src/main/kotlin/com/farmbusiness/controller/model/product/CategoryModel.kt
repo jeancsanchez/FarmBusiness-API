@@ -10,7 +10,7 @@ import javax.validation.constraints.NotBlank
  */
 @Entity
 @Table(name = "categories")
-class CategoryModel (
+class CategoryModel(
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -20,8 +20,7 @@ class CategoryModel (
     @NotBlank
     var title: String,
 
-    @Column
-    @OneToMany
+    @OneToMany(cascade = [CascadeType.ALL], orphanRemoval = true)
     @JoinColumn(name = "category_id")
-    var subCategories: List<SubCategoryModel>? = emptyList(),
+    var subCategories: MutableList<SubCategoryModel> = mutableListOf(),
 )

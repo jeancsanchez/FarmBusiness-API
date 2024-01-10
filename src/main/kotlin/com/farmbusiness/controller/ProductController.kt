@@ -1,6 +1,9 @@
 package com.farmbusiness.controller
 
+import com.farmbusiness.controller.mappers.toModel
+import com.farmbusiness.controller.mappers.toResponse
 import com.farmbusiness.controller.request.product.ProductRequest
+import com.farmbusiness.controller.response.ProductResponse
 import com.farmbusiness.service.ProductService
 import org.springframework.http.HttpStatus
 import org.springframework.http.ResponseEntity
@@ -24,15 +27,15 @@ class ProductController(
 ) {
     @PostMapping
     fun create(
-        @RequestBody @Valid bodyRequest: ProductRequest,
+        @Valid @RequestBody bodyRequest: ProductRequest,
         request: HttpServletRequest,
-    ): ResponseEntity<Unit> {
+    ): ResponseEntity<ProductResponse> {
         return try {
-            productService.create(
+            val entity = productService.create(
                 product = bodyRequest.toModel(),
                 images64 = bodyRequest.images,
-                categoryId = 1,
-                subCategoryId = 1,
+                categoryId = bodyRequest.categoryId,
+                subCategoryId = bodyRequest.subCategoryId,
                 hostUrl = request
                     .requestURL
                     .buildBaseUrl(request)
@@ -40,7 +43,7 @@ class ProductController(
 
             ResponseEntity
                 .status(HttpStatus.CREATED)
-                .build()
+                .body(entity.toResponse())
 
         } catch (t: Throwable) {
             t.printStackTrace()
@@ -50,7 +53,7 @@ class ProductController(
         }
     }
 
-    private fun StringBuffer.buildBaseUrl(request: HttpServletRequest) : String {
+    private fun StringBuffer.buildBaseUrl(request: HttpServletRequest): String {
         val string = toString()
         val protocol = string.split("://")[0]
         val builder = StringBuilder()
