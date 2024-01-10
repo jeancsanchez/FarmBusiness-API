@@ -4,6 +4,8 @@ import com.farmbusiness.controller.mappers.toModel
 import com.farmbusiness.controller.mappers.toResponse
 import com.farmbusiness.controller.request.product.ProductRequest
 import com.farmbusiness.controller.response.ProductResponse
+import com.farmbusiness.exception.CategoryNotFoundException
+import com.farmbusiness.exception.SubCategoryNotFoundException
 import com.farmbusiness.service.ProductService
 import org.springframework.http.HttpStatus
 import org.springframework.http.ResponseEntity
@@ -45,11 +47,22 @@ class ProductController(
                 .status(HttpStatus.CREATED)
                 .body(entity.toResponse())
 
-        } catch (t: Throwable) {
-            t.printStackTrace()
-            ResponseEntity
-                .status(HttpStatus.INTERNAL_SERVER_ERROR)
-                .build()
+        } catch (error: Exception) {
+            error.printStackTrace()
+
+            when (error) {
+                is CategoryNotFoundException -> ResponseEntity
+                    .status(error.errorCode)
+                    .build()
+
+                is SubCategoryNotFoundException -> ResponseEntity
+                    .status(error.errorCode)
+                    .build()
+
+                else -> ResponseEntity
+                    .status(HttpStatus.INTERNAL_SERVER_ERROR)
+                    .build()
+            }
         }
     }
 

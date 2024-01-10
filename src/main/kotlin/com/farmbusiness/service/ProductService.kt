@@ -2,6 +2,8 @@ package com.farmbusiness.service
 
 import com.farmbusiness.controller.model.ProductImageModel
 import com.farmbusiness.controller.model.product.ProductModel
+import com.farmbusiness.exception.CategoryNotFoundException
+import com.farmbusiness.exception.SubCategoryNotFoundException
 import com.farmbusiness.repository.CategoryRepository
 import com.farmbusiness.repository.ProductRepository
 import com.farmbusiness.utils.ImageUtils
@@ -33,9 +35,10 @@ class ProductService(
     ): ProductModel {
         product.images = images64?.toImages(hostUrl)
         product.subcategory = categoryRepository.findById(categoryId)
-            .orElseThrow()
+            .orElseThrow { CategoryNotFoundException() }
             .subCategories
             .find { it.id == subCategoryId }
+            ?: throw SubCategoryNotFoundException()
 
         return productRepository.save(product)
     }
