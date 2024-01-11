@@ -9,9 +9,9 @@ spring:
       format_sql: true
 
   datasource:
-    url: jdbc:mysql://root:aggg5hF532adG6-hDcFACA-fFFGg6ae1@mysql.railway.internal:3306/railway
+    url: jdbc:mysql://localhost:3306/farmbusiness?createDatabaseIfNotExist=true
     username: root
-    password: aggg5hF532adG6-hDcFACA-fFFGg6ae1
+    password: rootadmin
 
   jpa:
     defer-datasource-initialization: true
