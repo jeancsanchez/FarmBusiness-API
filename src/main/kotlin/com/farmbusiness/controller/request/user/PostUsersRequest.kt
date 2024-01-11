@@ -5,7 +5,7 @@ import javax.validation.constraints.NotEmpty
 
 data class PostUsersRequest(
 
-    @field:Range(min = 1, max = 2, message = "options for parameter `type`: seller - 1; buyer - 2")
+    @field:Range(min = 1, max = 2, message = "Options for field `type` are: Seller - 1; Buyer - 2")
     var type: Int,
 
     var firstName: String? = null,

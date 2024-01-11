@@ -1,6 +1,7 @@
 package com.farmbusiness.controller.error
 
 import com.farmbusiness.controller.response.ErrorResponse
+import com.farmbusiness.controller.response.FieldErrorResponse
 import com.farmbusiness.domain.errors.Errors
 import com.farmbusiness.domain.errors.exceptions.AuthenticationException
 import com.farmbusiness.domain.errors.exceptions.NotFoundException
@@ -29,7 +30,6 @@ class GlobalExceptionHandler {
             .body(
                 ErrorResponse(
                     httpCode = HttpStatus.INTERNAL_SERVER_ERROR.value(),
-
                     message = Errors.ML100.message,
                     internalCode = Errors.ML100.code
                 )
@@ -72,8 +72,11 @@ class GlobalExceptionHandler {
             .body(
                 ErrorResponse(
                     httpCode = HttpStatus.BAD_REQUEST.value(),
-                    message = Errors.ML002.message.format(message),
-                    internalCode = Errors.ML002.code
+                    message = Errors.ML002.message,
+                    internalCode = Errors.ML002.code,
+                    errors = listOf(
+                        FieldErrorResponse(message = message)
+                    )
                 )
             )
     }
@@ -93,8 +96,11 @@ class GlobalExceptionHandler {
             .body(
                 ErrorResponse(
                     httpCode = HttpStatus.BAD_REQUEST.value(),
-                    message = Errors.ML002.message.format(message),
-                    internalCode = Errors.ML002.code
+                    message = Errors.ML002.message,
+                    internalCode = Errors.ML002.code,
+                    errors = listOf(
+                        FieldErrorResponse(message = message)
+                    )
                 )
             )
     }
@@ -113,8 +119,11 @@ class GlobalExceptionHandler {
             .body(
                 ErrorResponse(
                     httpCode = HttpStatus.BAD_REQUEST.value(),
-                    message = Errors.ML002.message.format(message),
-                    internalCode = Errors.ML002.code
+                    message = Errors.ML002.message,
+                    internalCode = Errors.ML002.code,
+                    errors = listOf(
+                        FieldErrorResponse(message = message)
+                    )
                 )
             )
     }
