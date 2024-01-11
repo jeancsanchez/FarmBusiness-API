@@ -1,11 +1,12 @@
 package com.farmbusiness.controller.request.user
 
+import org.hibernate.validator.constraints.Range
 import javax.validation.constraints.NotEmpty
 
-data class PostUsersRequest (
+data class PostUsersRequest(
 
-    @field:NotEmpty(message = "O Tipo da conta deve ser informado")
-    var type: String,
+    @field:Range(min = 1, max = 2, message = "options for parameter `type`: seller - 1; buyer - 2")
+    var type: Int,
 
     var firstName: String? = null,
 
@@ -24,5 +25,9 @@ data class PostUsersRequest (
     var cnpj: String? = null,
 
     var phone: String? = null,
-
-)
+) {
+    companion object {
+        const val SELLER_ID = 1
+        const val BUYER_ID = 2
+    }
+}

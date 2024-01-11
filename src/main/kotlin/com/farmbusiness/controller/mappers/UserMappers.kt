@@ -14,6 +14,8 @@ fun PostUsersRequest.toUsersModel(): UsersModel {
         fantasyName = this.fantasyName,
         cnpj = this.cnpj,
         phone = this.phone,
-        roles = setOf(if (this.type == "buyer") Role.BUYER else Role.SELLER)
+        roles = setOf(
+            if (this.type == PostUsersRequest.SELLER_ID) Role.SELLER else Role.BUYER
+        )
     )
 }
