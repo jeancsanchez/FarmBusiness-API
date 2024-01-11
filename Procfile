@@ -1,0 +1,1 @@
+web: java -jar app.jar -Dspring.profiles.active=${PROFILE}
