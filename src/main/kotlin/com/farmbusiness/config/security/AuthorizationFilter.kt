@@ -4,7 +4,6 @@ import com.farmbusiness.domain.core.user.service.UserDetailsCustomService
 import com.farmbusiness.domain.errors.exceptions.AuthenticationException
 import com.farmbusiness.utils.extension.BEARER
 import com.farmbusiness.utils.extension.sendUnauthorized
-import io.jsonwebtoken.ExpiredJwtException
 import org.springframework.http.HttpHeaders
 import org.springframework.security.authentication.AuthenticationManager
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken
@@ -32,18 +31,22 @@ class AuthorizationFilter(
             val auth = getAuthentication(authorization.split(" ")[1])
             SecurityContextHolder.getContext().authentication = auth
             chain.doFilter(request, response)
-        } catch (e: ExpiredJwtException) {
-            e.printStackTrace()
-            response.sendUnauthorized()
+        } catch (ex: AuthenticationException) {
+            response.sendUnauthorized(ex)
         }
     }
 
     private fun getAuthentication(token: String): UsernamePasswordAuthenticationToken {
         if (!jwtUtil.isValidToken(token)) {
-            throw AuthenticationException("Token inválido", "999")
+            throw AuthenticationException()
         }
-        val subject = jwtUtil.getSubject(token)
-        val user = userDetails.loadUserByUsername(subject)
-        return UsernamePasswordAuthenticationToken(user, null, user.authorities)
+
+        return try {
+            val subject = jwtUtil.getSubject(token)
+            val user = userDetails.loadUserByUsername(subject)
+            UsernamePasswordAuthenticationToken(user, null, user.authorities)
+        } catch (e: Exception) {
+            throw AuthenticationException()
+        }
     }
 }

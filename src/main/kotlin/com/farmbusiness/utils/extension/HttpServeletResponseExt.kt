@@ -1,8 +1,7 @@
 package com.farmbusiness.utils.extension
 
-import com.farmbusiness.controller.response.ErrorResponse
+import com.farmbusiness.domain.errors.exceptions.AuthenticationException
 import com.fasterxml.jackson.databind.ObjectMapper
-import org.springframework.http.HttpStatus
 import org.springframework.http.MediaType
 import javax.servlet.http.HttpServletResponse
 
@@ -12,16 +11,14 @@ import javax.servlet.http.HttpServletResponse
  * Jesus loves you.
  */
 
-fun HttpServletResponse.sendUnauthorized() {
-    val status = HttpStatus.UNAUTHORIZED
-    val errorResponse = ErrorResponse(
-        httpCode = status.value(),
-        message = status.reasonPhrase
-    )
+fun HttpServletResponse.sendUnauthorized(
+    exception: AuthenticationException = AuthenticationException()
+) {
+    val response = exception.buildErrorResponse()
 
-    this.status = status.value()
-    this.contentType = MediaType.APPLICATION_JSON_VALUE
+    status = response.httpCode
+    contentType = MediaType.APPLICATION_JSON_VALUE
     writer.print(
-        ObjectMapper().writeValueAsString(errorResponse)
+        ObjectMapper().writeValueAsString(response)
     )
 }

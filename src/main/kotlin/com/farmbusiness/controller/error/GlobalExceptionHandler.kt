@@ -1,12 +1,13 @@
 package com.farmbusiness.controller.error
 
 import com.farmbusiness.controller.response.ErrorResponse
+import com.farmbusiness.domain.errors.exceptions.AuthenticationException
 import com.farmbusiness.domain.errors.exceptions.NotFoundException
+import com.farmbusiness.utils.extension.buildErrorResponse
 import org.springframework.http.HttpStatus
 import org.springframework.http.ResponseEntity
 import org.springframework.web.bind.annotation.ControllerAdvice
 import org.springframework.web.bind.annotation.ExceptionHandler
-import org.springframework.web.bind.annotation.ResponseStatus
 
 /**
  * @author @jeancsanchez
@@ -17,10 +18,19 @@ import org.springframework.web.bind.annotation.ResponseStatus
 @ControllerAdvice
 class GlobalExceptionHandler {
 
+    @ExceptionHandler(AuthenticationException::class)
+    fun handleUnauthorizedException(error: AuthenticationException): ResponseEntity<ErrorResponse> {
+        error.printStackTrace()
+        return error.buildErrorResponse()
+            .run {
+                ResponseEntity
+                    .status(httpCode)
+                    .body(this)
+            }
+    }
+
     @ExceptionHandler(NotFoundException::class)
-    @ResponseStatus(HttpStatus.NOT_FOUND)
-    fun handleNotFoundException(ex: Exception): ResponseEntity<ErrorResponse> {
-        val error = ex as NotFoundException
+    fun handleNotFoundException(error: NotFoundException): ResponseEntity<ErrorResponse> {
         error.printStackTrace()
 
         return ResponseEntity

@@ -3,6 +3,7 @@ package com.farmbusiness.domain.core.user.service
 import com.farmbusiness.config.security.JwtUtil
 import com.farmbusiness.config.security.UserCustomDetails
 import com.farmbusiness.domain.core.user.model.UsersModel
+import com.farmbusiness.domain.errors.Errors
 import com.farmbusiness.domain.errors.exceptions.AuthenticationException
 import com.farmbusiness.repository.UsersRepository
 import org.springframework.security.authentication.AuthenticationManager
@@ -18,14 +19,10 @@ class LoginService(
     private val jwtUtil: JwtUtil
 ) {
     fun login(login: String, password: String): Pair<String?, UsersModel?>? {
-        return try {
-            val authResult = attemptAuthentication(login, password)
+        val authResult = attemptAuthentication(login, password)
 
-            SecurityContextHolder.getContext().authentication = authResult
-            successfulAuthentication(authResult)
-        } catch (t: Throwable) {
-            null
-        }
+        SecurityContextHolder.getContext().authentication = authResult
+        return successfulAuthentication(authResult)
     }
 
     private fun attemptAuthentication(login: String, password: String): Authentication {
@@ -49,7 +46,7 @@ class LoginService(
             return authenticationManager.authenticate(authToken)
         } catch (ex: Exception) {
             ex.printStackTrace()
-            throw AuthenticationException("Falha ao autenticar", "999")
+            throw AuthenticationException(Errors.ML001.message, Errors.ML001.code)
         }
     }
 

@@ -1,6 +1,5 @@
 package com.farmbusiness.config.security
 
-import com.farmbusiness.domain.errors.exceptions.AuthenticationException
 import io.jsonwebtoken.Claims
 import io.jsonwebtoken.Jwts
 import io.jsonwebtoken.SignatureAlgorithm
@@ -26,16 +25,17 @@ class JwtUtil {
     }
 
     fun isValidToken(token: String): Boolean {
-        val claims = getClaims(token)
+        val claims = try {
+            getClaims(token)
+        } catch (ex: Exception) {
+            return false
+        }
+
         return !(claims.subject == null || claims.expiration == null || Date().after(claims.expiration))
     }
 
     private fun getClaims(token: String): Claims {
-        try {
-            return Jwts.parser().setSigningKey(secret!!.toByteArray()).parseClaimsJws(token).body
-        } catch (ex : Exception) {
-            throw AuthenticationException("Token Inválido", "999")
-        }
+        return Jwts.parser().setSigningKey(secret!!.toByteArray()).parseClaimsJws(token).body
     }
 
     fun getSubject(token: String): String {
