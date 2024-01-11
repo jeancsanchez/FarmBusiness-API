@@ -1,11 +1,11 @@
 package com.farmbusiness.controller
 
-import com.farmbusiness.controller.request.PostPrivacyPolicyRequest
-import com.farmbusiness.controller.request.PutPrivacyPolicyRequest
+import com.farmbusiness.controller.mappers.toPrivacyPolicyModel
+import com.farmbusiness.controller.mappers.toResponse
+import com.farmbusiness.controller.request.privacy.PostPrivacyPolicyRequest
+import com.farmbusiness.controller.request.privacy.PutPrivacyPolicyRequest
 import com.farmbusiness.controller.response.PrivacyPolicyResponse
-import com.farmbusiness.extension.toPrivacyPolicyModel
-import com.farmbusiness.extension.toResponse
-import com.farmbusiness.service.PrivacyPolicyService
+import com.farmbusiness.domain.core.privacy.PrivacyPolicyService
 import org.springframework.http.HttpStatus
 import org.springframework.web.bind.annotation.*
 import javax.validation.Valid

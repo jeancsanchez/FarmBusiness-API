@@ -1,6 +1,6 @@
 package com.farmbusiness.repository
 
-import com.farmbusiness.controller.model.AboutModel
+import com.farmbusiness.domain.core.about.AboutModel
 import org.springframework.data.jpa.repository.JpaRepository
 
 interface AboutRepository : JpaRepository<AboutModel, Int> {

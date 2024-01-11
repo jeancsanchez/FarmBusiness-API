@@ -1,11 +1,11 @@
 package com.farmbusiness.controller
 
-import com.farmbusiness.controller.request.PostTermsOfUseRequest
-import com.farmbusiness.controller.request.PutTermsOfUseRequest
+import com.farmbusiness.controller.mappers.toResponse
+import com.farmbusiness.controller.mappers.toTermsOfUseModel
+import com.farmbusiness.controller.request.terms.PostTermsOfUseRequest
+import com.farmbusiness.controller.request.terms.PutTermsOfUseRequest
 import com.farmbusiness.controller.response.TermsOfUseResponse
-import com.farmbusiness.extension.toResponse
-import com.farmbusiness.extension.toTermsOfUseModel
-import com.farmbusiness.service.TermsOfUseService
+import com.farmbusiness.domain.core.terms.TermsOfUseService
 import org.springframework.http.HttpStatus
 import org.springframework.web.bind.annotation.*
 import javax.validation.Valid
@@ -13,7 +13,7 @@ import javax.validation.Valid
 @RestController
 @RequestMapping("terms-of-use")
 class TermsOfUseController(
-    private val termsOfUseService : TermsOfUseService
+    private val termsOfUseService: TermsOfUseService
 ) {
 
     @PostMapping

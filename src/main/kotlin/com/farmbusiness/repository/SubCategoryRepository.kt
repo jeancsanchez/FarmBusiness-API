@@ -1,6 +1,6 @@
 package com.farmbusiness.repository
 
-import com.farmbusiness.controller.model.product.SubCategoryModel
+import com.farmbusiness.domain.core.category.model.SubCategoryModel
 import org.springframework.data.repository.CrudRepository
 
 interface SubCategoryRepository : CrudRepository<SubCategoryModel, Int?>

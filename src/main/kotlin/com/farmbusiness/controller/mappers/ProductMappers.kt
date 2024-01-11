@@ -1,9 +1,9 @@
 package com.farmbusiness.controller.mappers
 
-import com.farmbusiness.controller.model.product.ProductModel
 import com.farmbusiness.controller.request.product.ProductRequest
 import com.farmbusiness.controller.response.ProductResponse
-import com.farmbusiness.extension.toDate
+import com.farmbusiness.domain.core.product.model.ProductModel
+import com.farmbusiness.utils.extension.toDate
 
 /**
  * @author @jeancsanchez

@@ -1,6 +1,6 @@
 package com.farmbusiness.repository
 
-import com.farmbusiness.controller.model.PrivacyPolicyModel
+import com.farmbusiness.domain.core.privacy.PrivacyPolicyModel
 import org.springframework.data.jpa.repository.JpaRepository
 
 interface PrivacyPolicyRepository : JpaRepository<PrivacyPolicyModel, Int> {

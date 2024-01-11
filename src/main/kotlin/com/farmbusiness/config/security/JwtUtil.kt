@@ -1,12 +1,11 @@
 package com.farmbusiness.config.security
 
-import com.farmbusiness.exception.AuthenticationException
+import com.farmbusiness.domain.errors.exceptions.AuthenticationException
 import io.jsonwebtoken.Claims
 import io.jsonwebtoken.Jwts
 import io.jsonwebtoken.SignatureAlgorithm
 import org.springframework.beans.factory.annotation.Value
 import org.springframework.stereotype.Component
-import java.lang.Exception
 import java.util.*
 
 @Component

@@ -2,9 +2,9 @@ package com.farmbusiness.config
 
 import com.farmbusiness.config.security.AuthorizationFilter
 import com.farmbusiness.config.security.JwtUtil
-import com.farmbusiness.enums.Role
+import com.farmbusiness.domain.core.user.model.Role
+import com.farmbusiness.domain.core.user.service.UserDetailsCustomService
 import com.farmbusiness.repository.UsersRepository
-import com.farmbusiness.service.UserDetailsCustomService
 import org.springframework.context.annotation.Bean
 import org.springframework.context.annotation.Configuration
 import org.springframework.http.HttpMethod

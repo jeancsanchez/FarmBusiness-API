@@ -1,13 +1,13 @@
 package com.farmbusiness.controllers
 
-import com.farmbusiness.controller.model.product.CategoryModel
-import com.farmbusiness.controller.model.product.SubCategoryModel
 import com.farmbusiness.controller.request.product.ProductRequest
-import com.farmbusiness.extension.set
-import com.farmbusiness.extension.toBRFormat
+import com.farmbusiness.domain.core.category.model.CategoryModel
+import com.farmbusiness.domain.core.category.model.SubCategoryModel
 import com.farmbusiness.repository.CategoryRepository
 import com.farmbusiness.repository.ProductRepository
 import com.farmbusiness.repository.SubCategoryRepository
+import com.farmbusiness.utils.extension.set
+import com.farmbusiness.utils.extension.toBRFormat
 import com.fasterxml.jackson.databind.ObjectMapper
 import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.api.Assertions.assertTrue

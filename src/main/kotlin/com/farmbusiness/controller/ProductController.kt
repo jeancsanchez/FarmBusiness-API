@@ -4,9 +4,8 @@ import com.farmbusiness.controller.mappers.toModel
 import com.farmbusiness.controller.mappers.toResponse
 import com.farmbusiness.controller.request.product.ProductRequest
 import com.farmbusiness.controller.response.ProductResponse
-import com.farmbusiness.exception.CategoryNotFoundException
-import com.farmbusiness.exception.SubCategoryNotFoundException
-import com.farmbusiness.service.ProductService
+import com.farmbusiness.domain.core.product.service.ProductService
+import com.farmbusiness.domain.errors.exceptions.NotFoundException
 import org.springframework.http.HttpStatus
 import org.springframework.http.ResponseEntity
 import org.springframework.web.bind.annotation.PostMapping
@@ -51,12 +50,8 @@ class ProductController(
             error.printStackTrace()
 
             when (error) {
-                is CategoryNotFoundException -> ResponseEntity
-                    .status(error.errorCode)
-                    .build()
-
-                is SubCategoryNotFoundException -> ResponseEntity
-                    .status(error.errorCode)
+                is NotFoundException -> ResponseEntity
+                    .status(HttpStatus.NOT_FOUND)
                     .build()
 
                 else -> ResponseEntity

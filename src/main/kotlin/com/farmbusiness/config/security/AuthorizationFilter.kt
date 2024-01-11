@@ -1,13 +1,11 @@
 package com.farmbusiness.config.security
 
-import com.farmbusiness.enums.Role
-import com.farmbusiness.extension.BEARER
-import com.farmbusiness.exception.AuthenticationException
-import com.farmbusiness.extension.sendUnauthorized
-import com.farmbusiness.service.UserDetailsCustomService
+import com.farmbusiness.domain.core.user.service.UserDetailsCustomService
+import com.farmbusiness.domain.errors.exceptions.AuthenticationException
+import com.farmbusiness.utils.extension.BEARER
+import com.farmbusiness.utils.extension.sendUnauthorized
 import io.jsonwebtoken.ExpiredJwtException
 import org.springframework.http.HttpHeaders
-import org.springframework.http.HttpMethod
 import org.springframework.security.authentication.AuthenticationManager
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken
 import org.springframework.security.core.context.SecurityContextHolder

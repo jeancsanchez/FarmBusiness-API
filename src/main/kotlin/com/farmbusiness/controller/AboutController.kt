@@ -1,11 +1,11 @@
 package com.farmbusiness.controller
 
-import com.farmbusiness.controller.request.PostAboutRequest
-import com.farmbusiness.controller.request.PutAboutRequest
+import com.farmbusiness.controller.mappers.toAboutModel
+import com.farmbusiness.controller.mappers.toResponse
+import com.farmbusiness.controller.request.about.PostAboutRequest
+import com.farmbusiness.controller.request.about.PutAboutRequest
 import com.farmbusiness.controller.response.AboutResponse
-import com.farmbusiness.extension.toAboutModel
-import com.farmbusiness.extension.toResponse
-import com.farmbusiness.service.AboutService
+import com.farmbusiness.domain.core.about.AboutService
 import org.springframework.http.HttpStatus
 import org.springframework.web.bind.annotation.*
 import javax.validation.Valid
