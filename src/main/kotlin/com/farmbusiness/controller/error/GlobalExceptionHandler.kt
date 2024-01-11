@@ -4,6 +4,7 @@ import com.farmbusiness.controller.response.ErrorResponse
 import com.farmbusiness.controller.response.FieldErrorResponse
 import com.farmbusiness.domain.errors.Errors
 import com.farmbusiness.domain.errors.exceptions.AuthenticationException
+import com.farmbusiness.domain.errors.exceptions.ConflictException
 import com.farmbusiness.domain.errors.exceptions.NotFoundException
 import com.farmbusiness.utils.extension.buildErrorResponse
 import com.fasterxml.jackson.module.kotlin.MissingKotlinParameterException
@@ -124,6 +125,21 @@ class GlobalExceptionHandler {
                     errors = listOf(
                         FieldErrorResponse(message = message)
                     )
+                )
+            )
+    }
+
+    @ExceptionHandler(ConflictException::class)
+    fun handleConflictException(error: ConflictException): ResponseEntity<ErrorResponse> {
+        error.printStackTrace()
+
+        return ResponseEntity
+            .status(HttpStatus.CONFLICT)
+            .body(
+                ErrorResponse(
+                    httpCode = HttpStatus.CONFLICT.value(),
+                    message = error.message,
+                    internalCode = error.errorCode
                 )
             )
     }

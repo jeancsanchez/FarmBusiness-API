@@ -12,4 +12,5 @@ enum class Errors(val code: String, val message: String) {
     ML202("ML-202", "Product [%s] not exists"),
     ML203("ML-203", "Category [%s] not exists"),
     ML204("ML-204", "Subcategory [%s] not exists"),
+    ML205("ML-205", "User [%s] already exists"),
 }

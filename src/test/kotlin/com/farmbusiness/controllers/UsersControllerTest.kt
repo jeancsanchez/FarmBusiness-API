@@ -2,6 +2,7 @@ package com.farmbusiness.controllers
 
 import com.farmbusiness.controller.request.user.PostUsersRequest
 import com.farmbusiness.domain.core.user.model.Role
+import com.farmbusiness.domain.core.user.model.UsersModel
 import com.farmbusiness.domain.core.user.model.UsersStatus
 import com.farmbusiness.repository.UsersRepository
 import com.fasterxml.jackson.databind.ObjectMapper
@@ -49,6 +50,19 @@ class UsersControllerTest {
 
     protected val mapper = ObjectMapper()
 
+    private val mockUsersRequest = PostUsersRequest(
+        type = PostUsersRequest.SELLER_ID,
+        firstName = "name",
+        cpf = "some",
+        email = "someEmail@gmail.com",
+        password = "somepass",
+        company = "somecompany",
+        fantasyName = "fantasyname",
+        cnpj = "cnpj",
+        phone = "4232332"
+    )
+
+
     @BeforeEach
     fun setUp() {
         mvc = MockMvcBuilders.webAppContextSetup(context).build()
@@ -58,18 +72,7 @@ class UsersControllerTest {
     @Test
     fun `Cria novo usuario com todos os dados corretos`() {
         // Given
-        val body = PostUsersRequest(
-            type = "buyer",
-            firstName = "name",
-            cpf = "some",
-            email = "someemail",
-            password = "somepass",
-            company = "somecompany",
-            fantasyName = "fantasyname",
-            cnpj = "cnpj",
-            phone = "4232332"
-        )
-
+        val body = mockUsersRequest.copy(type = PostUsersRequest.BUYER_ID)
 
         // When
         request = post("/users")
@@ -96,5 +99,110 @@ class UsersControllerTest {
                 assertEquals(body.cnpj, cnpj)
                 assertEquals(body.phone, phone)
             }
+    }
+
+    @Test
+    fun `Valida email duplicado ao criar novo usuario`() {
+        // Given
+        val mockEmail = "test@gmail.com"
+        val body = mockUsersRequest.copy(email = mockEmail, cpf = "1", cnpj = "2")
+        val userModel = mockUsersRequest.run {
+            UsersModel(
+                roles = setOf(Role.BUYER),
+                email = mockEmail,
+                cpf = "3",
+                cnpj = "4",
+                status = UsersStatus.ATIVO,
+                firstName = firstName,
+                password = password,
+                company = company,
+                fantasyName = fantasyName,
+                phone = phone,
+            )
+        }
+
+        usersRepository.save(userModel)
+
+
+        // When
+        request = post("/users")
+            .content(mapper.writeValueAsString(body))
+            .contentType(MediaType.APPLICATION_JSON)
+
+        // Then
+        mvc.perform(request)
+            .andExpect(MockMvcResultMatchers.status().`is`(409))
+
+        assertEquals(1, usersRepository.count())
+    }
+
+    @Test
+    fun `Valida cpf duplicado ao criar novo usuario`() {
+        // Given
+        val mockCPF = "99999999"
+        val body = mockUsersRequest.copy(cpf = mockCPF, cnpj = "1", email = "2")
+        val userModel = mockUsersRequest.run {
+            UsersModel(
+                roles = setOf(Role.BUYER),
+                cpf = mockCPF,
+                cnpj = "3",
+                email = "4",
+                status = UsersStatus.ATIVO,
+                firstName = firstName,
+                password = password,
+                company = company,
+                fantasyName = fantasyName,
+                phone = phone,
+            )
+        }
+
+        usersRepository.save(userModel)
+
+
+        // When
+        request = post("/users")
+            .content(mapper.writeValueAsString(body))
+            .contentType(MediaType.APPLICATION_JSON)
+
+        // Then
+        mvc.perform(request)
+            .andExpect(MockMvcResultMatchers.status().`is`(409))
+
+        assertEquals(1, usersRepository.count())
+    }
+
+    @Test
+    fun `Valida cnpj duplicado ao criar novo usuario`() {
+        // Given
+        val mockCNPJ = "99999999"
+        val body = mockUsersRequest.copy(cnpj = mockCNPJ, cpf = "1", email = "2")
+        val userModel = mockUsersRequest.run {
+            UsersModel(
+                roles = setOf(Role.BUYER),
+                cnpj = mockCNPJ,
+                cpf = "3",
+                email = "4",
+                status = UsersStatus.ATIVO,
+                firstName = firstName,
+                password = password,
+                company = company,
+                fantasyName = fantasyName,
+                phone = phone,
+            )
+        }
+
+        usersRepository.save(userModel)
+
+
+        // When
+        request = post("/users")
+            .content(mapper.writeValueAsString(body))
+            .contentType(MediaType.APPLICATION_JSON)
+
+        // Then
+        mvc.perform(request)
+            .andExpect(MockMvcResultMatchers.status().`is`(409))
+
+        assertEquals(1, usersRepository.count())
     }
 }
