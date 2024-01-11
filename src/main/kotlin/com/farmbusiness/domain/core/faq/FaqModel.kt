@@ -3,7 +3,7 @@ package com.farmbusiness.domain.core.faq
 import javax.persistence.*
 
 @Entity(name = "faq")
-data class FaqModel (
+class FaqModel (
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     var id: Int? = null,

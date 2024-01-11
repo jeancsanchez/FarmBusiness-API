@@ -22,7 +22,7 @@ fun Date.set(
     minute: Int? = null,
     second: Int? = null
 ): Date {
-    val today = Date()
+    val today = this
 
     return Calendar.getInstance().run {
         set(Calendar.YEAR, year ?: today.year())

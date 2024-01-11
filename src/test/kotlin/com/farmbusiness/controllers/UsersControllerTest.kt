@@ -30,6 +30,7 @@ import org.springframework.web.context.WebApplicationContext
  * Jesus loves you.
  */
 
+@Suppress("SpellCheckingInspection")
 @SpringBootTest
 @WebAppConfiguration
 @RunWith(SpringRunner::class)
@@ -55,7 +56,7 @@ class UsersControllerTest {
     }
 
     @Test
-    fun createUserWithSuccessTest() {
+    fun `Cria novo usuario com todos os dados corretos`() {
         // Given
         val body = PostUsersRequest(
             type = "buyer",

@@ -3,7 +3,7 @@ package com.farmbusiness.domain.core.privacy
 import javax.persistence.*
 
 @Entity(name = "privacy_policy")
-data class PrivacyPolicyModel(
+class PrivacyPolicyModel(
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

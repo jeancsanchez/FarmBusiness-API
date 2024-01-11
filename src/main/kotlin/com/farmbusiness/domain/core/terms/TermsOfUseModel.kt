@@ -3,7 +3,7 @@ package com.farmbusiness.domain.core.terms
 import javax.persistence.*
 
 @Entity(name = "terms_use")
-data class TermsOfUseModel(
+class TermsOfUseModel(
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
