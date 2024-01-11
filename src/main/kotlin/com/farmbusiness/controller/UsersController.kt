@@ -3,6 +3,7 @@ package com.farmbusiness.controller
 import com.farmbusiness.config.security.UserCanOnlyAccessTheirOwnResource
 import com.farmbusiness.controller.mappers.toUsersModel
 import com.farmbusiness.controller.request.user.PostUsersRequest
+import com.farmbusiness.domain.core.user.model.UsersModel
 import com.farmbusiness.domain.core.user.service.UsersService
 import org.springframework.http.HttpStatus
 import org.springframework.http.ResponseEntity
@@ -19,12 +20,12 @@ class UsersController(
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
-    fun create(@RequestBody @Valid request: PostUsersRequest): ResponseEntity<Unit> {
-        usersService.create(request.toUsersModel())
+    fun create(@RequestBody @Valid request: PostUsersRequest): ResponseEntity<UsersModel> {
+        val model = usersService.create(request.toUsersModel())
 
         return ResponseEntity
             .status(HttpStatus.CREATED)
-            .build()
+            .body(model)
     }
 
     @GetMapping("/{id}")

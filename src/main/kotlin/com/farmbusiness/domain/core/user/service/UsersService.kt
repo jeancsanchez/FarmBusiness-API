@@ -15,7 +15,7 @@ class UsersService(
     private val bCrypt: BCryptPasswordEncoder
 ) {
 
-    fun create(usersModel: UsersModel) {
+    fun create(usersModel: UsersModel): UsersModel {
         usersModel.cpf?.let {
             if (usersRepository.findByCpf(it) != null) {
                 throwUserAlreadyExists(it)
@@ -38,6 +38,10 @@ class UsersService(
         }
 
         usersRepository.save(user)
+        return user.apply {
+            password = ""
+            roles = emptySet()
+        }
     }
 
 

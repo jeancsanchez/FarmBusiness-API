@@ -22,6 +22,8 @@ import org.springframework.test.web.servlet.MockMvc
 import org.springframework.test.web.servlet.request.MockHttpServletRequestBuilder
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post
 import org.springframework.test.web.servlet.result.MockMvcResultMatchers
+import org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath
+import org.springframework.test.web.servlet.result.MockMvcResultMatchers.status
 import org.springframework.test.web.servlet.setup.MockMvcBuilders
 import org.springframework.web.context.WebApplicationContext
 
@@ -81,7 +83,15 @@ class UsersControllerTest {
 
         // Then
         mvc.perform(request)
-            .andExpect(MockMvcResultMatchers.status().`is`(201))
+            .andExpect(status().`is`(201))
+            .andExpect(jsonPath("$.id").isNumber)
+            .andExpect(jsonPath("$.roles").doesNotExist())
+            .andExpect(jsonPath("$.firstName").value(body.firstName))
+            .andExpect(jsonPath("$.cpf").value(body.cpf))
+            .andExpect(jsonPath("$.email").value(body.email))
+            .andExpect(jsonPath("$.password").doesNotExist())
+            .andExpect(jsonPath("$.company").value(body.company))
+            .andExpect(jsonPath("$.fantasyName").value(body.fantasyName))
 
         usersRepository
             .findAll()
