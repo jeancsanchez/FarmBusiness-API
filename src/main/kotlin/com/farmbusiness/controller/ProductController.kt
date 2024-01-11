@@ -5,7 +5,6 @@ import com.farmbusiness.controller.mappers.toResponse
 import com.farmbusiness.controller.request.product.ProductRequest
 import com.farmbusiness.controller.response.ProductResponse
 import com.farmbusiness.domain.core.product.service.ProductService
-import com.farmbusiness.domain.errors.exceptions.NotFoundException
 import org.springframework.http.HttpStatus
 import org.springframework.http.ResponseEntity
 import org.springframework.web.bind.annotation.PostMapping
@@ -31,34 +30,20 @@ class ProductController(
         @Valid @RequestBody bodyRequest: ProductRequest,
         request: HttpServletRequest,
     ): ResponseEntity<ProductResponse> {
-        return try {
-            val entity = productService.create(
-                product = bodyRequest.toModel(),
-                images64 = bodyRequest.images,
-                categoryId = bodyRequest.categoryId,
-                subCategoryId = bodyRequest.subCategoryId,
-                hostUrl = request
-                    .requestURL
-                    .buildBaseUrl(request)
-            )
+        val entity = productService.create(
+            product = bodyRequest.toModel(),
+            images64 = bodyRequest.images,
+            categoryId = bodyRequest.categoryId,
+            subCategoryId = bodyRequest.subCategoryId,
+            hostUrl = request
+                .requestURL
+                .buildBaseUrl(request)
+        )
 
-            ResponseEntity
-                .status(HttpStatus.CREATED)
-                .body(entity.toResponse())
+        return ResponseEntity
+            .status(HttpStatus.CREATED)
+            .body(entity.toResponse())
 
-        } catch (error: Exception) {
-            error.printStackTrace()
-
-            when (error) {
-                is NotFoundException -> ResponseEntity
-                    .status(HttpStatus.NOT_FOUND)
-                    .build()
-
-                else -> ResponseEntity
-                    .status(HttpStatus.INTERNAL_SERVER_ERROR)
-                    .build()
-            }
-        }
     }
 
     private fun StringBuffer.buildBaseUrl(request: HttpServletRequest): String {
