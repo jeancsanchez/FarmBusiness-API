@@ -3,12 +3,19 @@ spring:
     name: staging
     profiles:
       active: staging
+  b2:
+    spring:
+      datasource:
+        driver-class-name=org:
+          postgresql:
+            Driver:
 
   properties:
     hibernate:
       format_sql: true
 
   datasource:
+    driver-class-name: org.postgresql.Driver
     url: jdbc:${DATABASE_URL}
     username: ${DATABASE_USER}
     password: ${DATABASE_PASS}
