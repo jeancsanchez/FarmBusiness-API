@@ -5,7 +5,7 @@ spring:
       active: prod
 
   datasource:
-    url: ${DATABASE_URL}
+    url: jdbc:${DATABASE_URL}
     username: ${DATABASE_USER}
     password: ${DATABASE_PASS}
     port: ${DATABASE_PORT}
