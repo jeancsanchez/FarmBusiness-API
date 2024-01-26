@@ -1,6 +1,6 @@
-package com.farmbusiness.domain.core.category.model
+package com.farmbusiness.features.product.domain.model.categories
 
-import com.farmbusiness.domain.core.product.model.ProductModel
+import com.farmbusiness.features.product.domain.model.ProductModel
 import javax.persistence.*
 import javax.validation.constraints.NotBlank
 
@@ -13,19 +13,19 @@ import javax.validation.constraints.NotBlank
 @Table(name = "subcategories")
 class SubCategoryModel(
 
-    @Id
+        @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     var id: Int? = null,
 
-    @Column
+        @Column
     @NotBlank
     var title: String,
 
-    @ManyToOne
+        @ManyToOne
     @JoinColumn(name = "category_id")
     var category: CategoryModel,
 
-    @OneToMany(cascade = [CascadeType.ALL], orphanRemoval = true)
+        @OneToMany(cascade = [CascadeType.ALL], orphanRemoval = true)
     @JoinColumn(name = "subcategory_id")
     val products: MutableList<ProductModel> = mutableListOf()
 )

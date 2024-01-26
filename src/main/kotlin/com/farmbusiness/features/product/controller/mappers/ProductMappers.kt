@@ -1,7 +1,7 @@
-package com.farmbusiness.controller.mappers
+package com.farmbusiness.features.product.controller.mappers
 
-import com.farmbusiness.controller.request.product.ProductRequest
-import com.farmbusiness.controller.response.ProductResponse
+import com.farmbusiness.features.product.controller.request.ProductRequest
+import com.farmbusiness.features.product.controller.response.ProductResponse
 import com.farmbusiness.features.product.domain.model.ProductModel
 import com.farmbusiness.utils.extension.toDate
 

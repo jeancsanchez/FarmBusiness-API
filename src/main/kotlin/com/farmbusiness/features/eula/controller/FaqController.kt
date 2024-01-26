@@ -1,13 +1,13 @@
-package com.farmbusiness.controller
+package com.farmbusiness.features.eula.controller
 
-import com.farmbusiness.controller.mappers.page.toPageResponse
-import com.farmbusiness.controller.mappers.toFaqModel
-import com.farmbusiness.controller.mappers.toResponse
-import com.farmbusiness.controller.request.faq.PostFaqRequest
-import com.farmbusiness.controller.request.faq.PutFaqRequest
-import com.farmbusiness.controller.response.FaqResponse
-import com.farmbusiness.controller.response.PageResponse
-import com.farmbusiness.domain.core.faq.FaqService
+import com.farmbusiness.utils.extension.toPageResponse
+import com.farmbusiness.features.eula.controller.mappers.toFaqModel
+import com.farmbusiness.features.eula.controller.mappers.toResponse
+import com.farmbusiness.features.eula.controller.request.faq.PostFaqRequest
+import com.farmbusiness.features.eula.controller.request.faq.PutFaqRequest
+import com.farmbusiness.features.eula.controller.response.FaqResponse
+import com.farmbusiness.features.eula.controller.response.PageResponse
+import com.farmbusiness.features.eula.domain.faq.FaqService
 import org.springframework.data.domain.Pageable
 import org.springframework.data.web.PageableDefault
 import org.springframework.http.HttpStatus

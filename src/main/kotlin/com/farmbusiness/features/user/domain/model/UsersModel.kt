@@ -1,4 +1,4 @@
-package com.farmbusiness.domain.core.user.model
+package com.farmbusiness.features.user.domain.model
 
 import javax.persistence.*
 import javax.validation.constraints.Email
@@ -7,40 +7,40 @@ import javax.validation.constraints.Email
 @Entity(name = "users")
 class UsersModel(
 
-    @Id
+        @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     var id: Int? = null,
 
-    @Column
+        @Column
     var firstName: String? = null,
 
-    @Column
+        @Column
     var cpf: String? = null,
 
-    @Column
+        @Column
     @Email(message = "Email inválido")
     var email: String,
 
-    @Column
+        @Column
     var password: String,
 
-    @Column
+        @Column
     var company: String? = null,
 
-    @Column
+        @Column
     var fantasyName: String? = null,
 
-    @Column
+        @Column
     var cnpj: String? = null,
 
-    @Column
+        @Column
     @Enumerated(EnumType.STRING)
     var status: UsersStatus? = null,
 
-    @Column
+        @Column
     var phone: String? = null,
 
-    @Column(name = "role")
+        @Column(name = "role")
     @Enumerated(EnumType.STRING)
     @ElementCollection(targetClass = Role::class, fetch = FetchType.EAGER)
     @CollectionTable(name = "user_roles", joinColumns = [JoinColumn(name = "user_id")])

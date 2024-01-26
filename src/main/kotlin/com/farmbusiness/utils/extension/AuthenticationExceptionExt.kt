@@ -1,8 +1,8 @@
 package com.farmbusiness.utils.extension
 
-import com.farmbusiness.controller.response.ErrorResponse
-import com.farmbusiness.domain.errors.Errors
-import com.farmbusiness.domain.errors.exceptions.AuthenticationException
+import com.farmbusiness.errors.response.ErrorResponse
+import com.farmbusiness.errors.Errors
+import com.farmbusiness.features.user.domain.errors.AuthenticationException
 import org.springframework.http.HttpStatus
 
 /**

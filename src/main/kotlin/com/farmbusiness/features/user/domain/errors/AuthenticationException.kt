@@ -1,8 +1,8 @@
-package com.farmbusiness.domain.errors.exceptions
+package com.farmbusiness.features.user.domain.errors
 
-import com.farmbusiness.domain.errors.Errors
+import com.farmbusiness.errors.Errors
 
 class AuthenticationException(
-    override val message: String = Errors.ML000.message,
-    val errorCode: String = Errors.ML000.code
+        override val message: String = Errors.ML000.message,
+        val errorCode: String = Errors.ML000.code
 ) : Exception()

@@ -1,4 +1,4 @@
-package com.farmbusiness.controller.request.terms
+package com.farmbusiness.features.eula.controller.request.terms
 
 import javax.validation.constraints.NotEmpty
 

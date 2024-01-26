@@ -1,9 +1,9 @@
-package com.farmbusiness.controller
+package com.farmbusiness.features.user.controller
 
-import com.farmbusiness.controller.mappers.toLoginResponse
-import com.farmbusiness.controller.request.user.LoginRequest
-import com.farmbusiness.controller.response.LoginResponse
-import com.farmbusiness.domain.core.user.service.LoginService
+import com.farmbusiness.features.user.controller.mappers.toLoginResponse
+import com.farmbusiness.features.user.controller.request.LoginRequest
+import com.farmbusiness.features.user.controller.response.LoginResponse
+import com.farmbusiness.features.user.domain.service.LoginService
 import com.farmbusiness.utils.extension.BEARER
 import org.springframework.http.HttpHeaders
 import org.springframework.http.HttpStatus

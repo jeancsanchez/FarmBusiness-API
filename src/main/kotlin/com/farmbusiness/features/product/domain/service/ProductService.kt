@@ -1,11 +1,11 @@
-package com.farmbusiness.domain.core.product.service
+package com.farmbusiness.features.product.domain.service
 
-import com.farmbusiness.domain.core.product.model.ProductImageModel
-import com.farmbusiness.domain.core.product.model.ProductModel
-import com.farmbusiness.domain.errors.Errors
-import com.farmbusiness.domain.errors.exceptions.NotFoundException
-import com.farmbusiness.repository.CategoryRepository
-import com.farmbusiness.repository.ProductRepository
+import com.farmbusiness.features.product.domain.model.ProductImageModel
+import com.farmbusiness.features.product.domain.model.ProductModel
+import com.farmbusiness.errors.Errors
+import com.farmbusiness.errors.exceptions.NotFoundException
+import com.farmbusiness.features.product.repository.categories.CategoryRepository
+import com.farmbusiness.features.product.repository.ProductRepository
 import com.farmbusiness.utils.ImageUtils
 import org.springframework.stereotype.Service
 import java.io.File
@@ -22,16 +22,16 @@ import java.util.*
 
 @Service
 class ProductService(
-    private val productRepository: ProductRepository,
-    private val categoryRepository: CategoryRepository
+        private val productRepository: ProductRepository,
+        private val categoryRepository: CategoryRepository
 ) {
 
     fun create(
-        product: ProductModel,
-        images64: List<String>?,
-        categoryId: Int,
-        subCategoryId: Int,
-        hostUrl: String,
+            product: ProductModel,
+            images64: List<String>?,
+            categoryId: Int,
+            subCategoryId: Int,
+            hostUrl: String,
     ): ProductModel {
         product.images = images64?.toImages(hostUrl)
         product.subcategory = categoryRepository.findById(categoryId)

@@ -1,4 +1,6 @@
-package com.farmbusiness.controller.response
+package com.farmbusiness.errors.response
+
+import com.farmbusiness.features.eula.controller.response.FieldErrorResponse
 
 data class ErrorResponse(
     val httpCode: Int,

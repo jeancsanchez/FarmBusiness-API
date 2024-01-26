@@ -1,10 +1,10 @@
 package com.farmbusiness.controllers
 
-import com.farmbusiness.controller.request.user.PostUsersRequest
-import com.farmbusiness.domain.core.user.model.Role
-import com.farmbusiness.domain.core.user.model.UsersModel
-import com.farmbusiness.domain.core.user.model.UsersStatus
-import com.farmbusiness.repository.UsersRepository
+import com.farmbusiness.features.user.controller.request.PostUsersRequest
+import com.farmbusiness.features.user.domain.model.Role
+import com.farmbusiness.features.user.domain.model.UsersModel
+import com.farmbusiness.features.user.domain.model.UsersStatus
+import com.farmbusiness.features.user.repository.UsersRepository
 import com.fasterxml.jackson.databind.ObjectMapper
 import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.api.Assertions.assertNotNull

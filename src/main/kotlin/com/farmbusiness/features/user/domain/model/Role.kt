@@ -1,4 +1,4 @@
-package com.farmbusiness.domain.core.user.model
+package com.farmbusiness.features.user.domain.model
 
 enum class Role(val description: String) {
     ADMIN("ROLE_ADMIN"),

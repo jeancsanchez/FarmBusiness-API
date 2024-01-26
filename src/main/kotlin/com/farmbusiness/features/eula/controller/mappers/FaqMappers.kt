@@ -1,8 +1,8 @@
-package com.farmbusiness.controller.mappers
+package com.farmbusiness.features.eula.controller.mappers
 
-import com.farmbusiness.controller.request.faq.PostFaqRequest
-import com.farmbusiness.controller.request.faq.PutFaqRequest
-import com.farmbusiness.controller.response.FaqResponse
+import com.farmbusiness.features.eula.controller.request.faq.PostFaqRequest
+import com.farmbusiness.features.eula.controller.request.faq.PutFaqRequest
+import com.farmbusiness.features.eula.controller.response.FaqResponse
 import com.farmbusiness.features.eula.domain.faq.FaqModel
 
 fun FaqModel.toResponse(): FaqResponse {

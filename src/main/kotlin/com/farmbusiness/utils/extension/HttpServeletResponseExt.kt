@@ -1,6 +1,6 @@
 package com.farmbusiness.utils.extension
 
-import com.farmbusiness.domain.errors.exceptions.AuthenticationException
+import com.farmbusiness.features.user.domain.errors.AuthenticationException
 import com.fasterxml.jackson.databind.ObjectMapper
 import org.springframework.http.MediaType
 import javax.servlet.http.HttpServletResponse

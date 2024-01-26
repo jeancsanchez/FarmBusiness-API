@@ -1,6 +1,6 @@
-package com.farmbusiness.repository
+package com.farmbusiness.features.user.repository
 
-import com.farmbusiness.domain.core.user.model.UsersModel
+import com.farmbusiness.features.user.domain.model.UsersModel
 import org.springframework.data.jpa.repository.JpaRepository
 
 interface UsersRepository : JpaRepository<UsersModel, Int> {

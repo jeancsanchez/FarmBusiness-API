@@ -1,6 +1,6 @@
-package com.farmbusiness.domain.core.about
+package com.farmbusiness.features.eula.domain.about
 
-import com.farmbusiness.repository.AboutRepository
+import com.farmbusiness.features.eula.repository.AboutRepository
 import org.springframework.stereotype.Service
 
 @Service

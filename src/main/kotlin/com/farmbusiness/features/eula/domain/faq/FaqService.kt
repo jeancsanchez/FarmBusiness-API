@@ -1,8 +1,8 @@
-package com.farmbusiness.domain.core.faq
+package com.farmbusiness.features.eula.domain.faq
 
-import com.farmbusiness.domain.errors.Errors
-import com.farmbusiness.domain.errors.exceptions.NotFoundException
-import com.farmbusiness.repository.FaqRepository
+import com.farmbusiness.errors.Errors
+import com.farmbusiness.errors.exceptions.NotFoundException
+import com.farmbusiness.features.eula.repository.FaqRepository
 import org.springframework.data.domain.Page
 import org.springframework.data.domain.Pageable
 import org.springframework.stereotype.Service

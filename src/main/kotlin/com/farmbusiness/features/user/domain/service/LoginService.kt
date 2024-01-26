@@ -1,11 +1,11 @@
-package com.farmbusiness.domain.core.user.service
+package com.farmbusiness.features.user.domain.service
 
 import com.farmbusiness.config.security.JwtUtil
 import com.farmbusiness.config.security.UserCustomDetails
-import com.farmbusiness.domain.core.user.model.UsersModel
-import com.farmbusiness.domain.errors.Errors
-import com.farmbusiness.domain.errors.exceptions.AuthenticationException
-import com.farmbusiness.repository.UsersRepository
+import com.farmbusiness.features.user.domain.model.UsersModel
+import com.farmbusiness.errors.Errors
+import com.farmbusiness.features.user.domain.errors.AuthenticationException
+import com.farmbusiness.features.user.repository.UsersRepository
 import org.springframework.security.authentication.AuthenticationManager
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken
 import org.springframework.security.core.Authentication
@@ -14,9 +14,9 @@ import org.springframework.stereotype.Service
 
 @Service
 class LoginService(
-    private val authenticationManager: AuthenticationManager,
-    private val usersRepository: UsersRepository,
-    private val jwtUtil: JwtUtil
+        private val authenticationManager: AuthenticationManager,
+        private val usersRepository: UsersRepository,
+        private val jwtUtil: JwtUtil
 ) {
     fun login(login: String, password: String): Pair<String?, UsersModel?>? {
         val authResult = attemptAuthentication(login, password)

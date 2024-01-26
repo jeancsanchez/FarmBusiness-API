@@ -1,4 +1,4 @@
-package com.farmbusiness.domain.core.about
+package com.farmbusiness.features.eula.domain.about
 
 import javax.persistence.*
 

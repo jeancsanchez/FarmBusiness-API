@@ -1,6 +1,6 @@
-package com.farmbusiness.repository
+package com.farmbusiness.features.eula.repository
 
-import com.farmbusiness.domain.core.about.AboutModel
+import com.farmbusiness.features.eula.domain.about.AboutModel
 import org.springframework.data.jpa.repository.JpaRepository
 
 interface AboutRepository : JpaRepository<AboutModel, Int> {

@@ -1,8 +1,8 @@
-package com.farmbusiness.domain.core.user.service
+package com.farmbusiness.features.user.domain.service
 
 import com.farmbusiness.config.security.UserCustomDetails
-import com.farmbusiness.domain.errors.exceptions.AuthenticationException
-import com.farmbusiness.repository.UsersRepository
+import com.farmbusiness.features.user.domain.errors.AuthenticationException
+import com.farmbusiness.features.user.repository.UsersRepository
 import org.springframework.security.core.userdetails.UserDetails
 import org.springframework.security.core.userdetails.UserDetailsService
 import org.springframework.stereotype.Service

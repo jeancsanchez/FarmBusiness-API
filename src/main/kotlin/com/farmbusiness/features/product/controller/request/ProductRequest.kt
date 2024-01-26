@@ -1,4 +1,4 @@
-package com.farmbusiness.controller.request.product
+package com.farmbusiness.features.product.controller.request
 
 import javax.validation.constraints.NotNull
 

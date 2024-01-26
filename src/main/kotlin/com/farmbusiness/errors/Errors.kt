@@ -1,4 +1,4 @@
-package com.farmbusiness.domain.errors
+package com.farmbusiness.errors
 
 enum class Errors(val code: String, val message: String) {
     ML100("ML-100", "Internal Server Error"),

@@ -1,11 +1,11 @@
-package com.farmbusiness.controller
+package com.farmbusiness.features.eula.controller
 
-import com.farmbusiness.controller.mappers.toPrivacyPolicyModel
-import com.farmbusiness.controller.mappers.toResponse
-import com.farmbusiness.controller.request.privacy.PostPrivacyPolicyRequest
-import com.farmbusiness.controller.request.privacy.PutPrivacyPolicyRequest
-import com.farmbusiness.controller.response.PrivacyPolicyResponse
-import com.farmbusiness.domain.core.privacy.PrivacyPolicyService
+import com.farmbusiness.features.eula.controller.mappers.toPrivacyPolicyModel
+import com.farmbusiness.features.eula.controller.mappers.toResponse
+import com.farmbusiness.features.eula.controller.request.privacy.PostPrivacyPolicyRequest
+import com.farmbusiness.features.eula.controller.request.privacy.PutPrivacyPolicyRequest
+import com.farmbusiness.features.eula.controller.response.PrivacyPolicyResponse
+import com.farmbusiness.features.eula.domain.privacy.PrivacyPolicyService
 import org.springframework.http.HttpStatus
 import org.springframework.web.bind.annotation.*
 import javax.validation.Valid
@@ -13,7 +13,7 @@ import javax.validation.Valid
 @RestController
 @RequestMapping("privacy-policy")
 class PrivacyPolicyController(
-    private val privacyPolicyService: PrivacyPolicyService,
+        private val privacyPolicyService: PrivacyPolicyService,
 ) {
 
     @PostMapping

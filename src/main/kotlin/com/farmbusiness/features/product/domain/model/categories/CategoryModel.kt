@@ -1,4 +1,4 @@
-package com.farmbusiness.domain.core.category.model
+package com.farmbusiness.features.product.domain.model.categories
 
 import javax.persistence.*
 import javax.validation.constraints.NotBlank
@@ -12,15 +12,15 @@ import javax.validation.constraints.NotBlank
 @Table(name = "categories")
 class CategoryModel(
 
-    @Id
+        @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     var id: Int? = null,
 
-    @Column
+        @Column
     @NotBlank
     var title: String,
 
-    @OneToMany(cascade = [CascadeType.ALL], orphanRemoval = true)
+        @OneToMany(cascade = [CascadeType.ALL], orphanRemoval = true)
     @JoinColumn(name = "category_id")
     var subCategories: MutableList<SubCategoryModel> = mutableListOf(),
 )

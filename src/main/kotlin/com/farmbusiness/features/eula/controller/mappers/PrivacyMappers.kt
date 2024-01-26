@@ -1,8 +1,8 @@
-package com.farmbusiness.controller.mappers
+package com.farmbusiness.features.eula.controller.mappers
 
-import com.farmbusiness.controller.request.privacy.PostPrivacyPolicyRequest
-import com.farmbusiness.controller.request.privacy.PutPrivacyPolicyRequest
-import com.farmbusiness.controller.response.PrivacyPolicyResponse
+import com.farmbusiness.features.eula.controller.request.privacy.PostPrivacyPolicyRequest
+import com.farmbusiness.features.eula.controller.request.privacy.PutPrivacyPolicyRequest
+import com.farmbusiness.features.eula.controller.response.PrivacyPolicyResponse
 import com.farmbusiness.features.eula.domain.privacy.PrivacyPolicyModel
 
 

@@ -1,4 +1,4 @@
-package com.farmbusiness.controller.response
+package com.farmbusiness.features.eula.controller.response
 
 class PageResponse<T>(
     var items: List<T>,

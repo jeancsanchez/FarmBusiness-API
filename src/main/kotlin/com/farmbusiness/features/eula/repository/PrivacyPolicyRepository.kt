@@ -1,6 +1,6 @@
-package com.farmbusiness.repository
+package com.farmbusiness.features.eula.repository
 
-import com.farmbusiness.domain.core.privacy.PrivacyPolicyModel
+import com.farmbusiness.features.eula.domain.privacy.PrivacyPolicyModel
 import org.springframework.data.jpa.repository.JpaRepository
 
 interface PrivacyPolicyRepository : JpaRepository<PrivacyPolicyModel, Int> {

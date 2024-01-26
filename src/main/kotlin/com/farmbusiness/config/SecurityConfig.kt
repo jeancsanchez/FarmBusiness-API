@@ -2,9 +2,9 @@ package com.farmbusiness.config
 
 import com.farmbusiness.config.security.AuthorizationFilter
 import com.farmbusiness.config.security.JwtUtil
-import com.farmbusiness.domain.core.user.model.Role
-import com.farmbusiness.domain.core.user.service.UserDetailsCustomService
-import com.farmbusiness.repository.UsersRepository
+import com.farmbusiness.features.user.domain.model.Role
+import com.farmbusiness.features.user.domain.service.UserDetailsCustomService
+import com.farmbusiness.features.user.repository.UsersRepository
 import org.springframework.context.annotation.Bean
 import org.springframework.context.annotation.Configuration
 import org.springframework.http.HttpMethod
@@ -24,9 +24,9 @@ import org.springframework.web.filter.CorsFilter
 @Configuration
 @EnableWebSecurity
 class SecurityConfig(
-    private val usersRepository: UsersRepository,
-    private val userDetails: UserDetailsCustomService,
-    private val jwtUtil: JwtUtil
+        private val usersRepository: UsersRepository,
+        private val userDetails: UserDetailsCustomService,
+        private val jwtUtil: JwtUtil
 ) : WebSecurityConfigurerAdapter() {
 
     private val publicPostMatchers = arrayOf(

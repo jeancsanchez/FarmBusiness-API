@@ -1,8 +1,8 @@
-package com.farmbusiness.controller.mappers
+package com.farmbusiness.features.eula.controller.mappers
 
-import com.farmbusiness.controller.request.about.PostAboutRequest
-import com.farmbusiness.controller.request.about.PutAboutRequest
-import com.farmbusiness.controller.response.AboutResponse
+import com.farmbusiness.features.eula.controller.request.about.PostAboutRequest
+import com.farmbusiness.features.eula.controller.request.about.PutAboutRequest
+import com.farmbusiness.features.eula.controller.response.AboutResponse
 import com.farmbusiness.features.eula.domain.about.AboutModel
 
 fun AboutModel.toResponse(): AboutResponse {

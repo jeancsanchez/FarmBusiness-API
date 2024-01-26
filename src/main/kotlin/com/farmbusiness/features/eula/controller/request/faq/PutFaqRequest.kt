@@ -1,4 +1,4 @@
-package com.farmbusiness.controller.request.faq
+package com.farmbusiness.features.eula.controller.request.faq
 
 data class PutFaqRequest (
     var title: String,

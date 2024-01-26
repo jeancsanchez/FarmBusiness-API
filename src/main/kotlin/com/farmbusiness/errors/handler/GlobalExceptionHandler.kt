@@ -1,11 +1,11 @@
-package com.farmbusiness.controller.error
+package com.farmbusiness.errors.handler
 
-import com.farmbusiness.controller.response.ErrorResponse
-import com.farmbusiness.controller.response.FieldErrorResponse
-import com.farmbusiness.domain.errors.Errors
-import com.farmbusiness.domain.errors.exceptions.AuthenticationException
-import com.farmbusiness.domain.errors.exceptions.ConflictException
-import com.farmbusiness.domain.errors.exceptions.NotFoundException
+import com.farmbusiness.features.eula.controller.response.FieldErrorResponse
+import com.farmbusiness.errors.response.ErrorResponse
+import com.farmbusiness.errors.Errors
+import com.farmbusiness.features.user.domain.errors.AuthenticationException
+import com.farmbusiness.errors.exceptions.ConflictException
+import com.farmbusiness.errors.exceptions.NotFoundException
 import com.farmbusiness.utils.extension.buildErrorResponse
 import com.fasterxml.jackson.module.kotlin.MissingKotlinParameterException
 import org.springframework.http.HttpStatus
@@ -26,6 +26,8 @@ class GlobalExceptionHandler {
 
     @ExceptionHandler(Exception::class)
     fun handleGenericException(ex: Exception): ResponseEntity<ErrorResponse> {
+        ex.printStackTrace()
+
         return ResponseEntity
             .status(HttpStatus.INTERNAL_SERVER_ERROR)
             .body(

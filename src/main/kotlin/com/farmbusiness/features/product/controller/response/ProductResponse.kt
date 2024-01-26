@@ -1,4 +1,4 @@
-package com.farmbusiness.controller.response
+package com.farmbusiness.features.product.controller.response
 
 data class ProductResponse(
     val id: Int,

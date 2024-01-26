@@ -1,10 +1,10 @@
-package com.farmbusiness.controller
+package com.farmbusiness.features.user.controller
 
 import com.farmbusiness.config.security.UserCanOnlyAccessTheirOwnResource
-import com.farmbusiness.controller.mappers.toUsersModel
-import com.farmbusiness.controller.request.user.PostUsersRequest
-import com.farmbusiness.domain.core.user.model.UsersModel
-import com.farmbusiness.domain.core.user.service.UsersService
+import com.farmbusiness.features.user.controller.mappers.toUsersModel
+import com.farmbusiness.features.user.controller.request.PostUsersRequest
+import com.farmbusiness.features.user.domain.model.UsersModel
+import com.farmbusiness.features.user.domain.service.UsersService
 import org.springframework.http.HttpStatus
 import org.springframework.http.ResponseEntity
 import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity

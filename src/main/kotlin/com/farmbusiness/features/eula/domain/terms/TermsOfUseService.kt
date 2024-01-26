@@ -1,6 +1,6 @@
-package com.farmbusiness.domain.core.terms
+package com.farmbusiness.features.eula.domain.terms
 
-import com.farmbusiness.repository.TermsOfUseRepository
+import com.farmbusiness.features.eula.repository.TermsOfUseRepository
 import org.springframework.stereotype.Service
 
 @Service

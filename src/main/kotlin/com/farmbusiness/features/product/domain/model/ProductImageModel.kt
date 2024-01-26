@@ -1,4 +1,4 @@
-package com.farmbusiness.domain.core.product.model
+package com.farmbusiness.features.product.domain.model
 
 import javax.persistence.*
 import javax.validation.constraints.NotBlank

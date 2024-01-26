@@ -1,6 +1,6 @@
-package com.farmbusiness.repository
+package com.farmbusiness.features.eula.repository
 
-import com.farmbusiness.domain.core.faq.FaqModel
+import com.farmbusiness.features.eula.domain.faq.FaqModel
 import org.springframework.data.jpa.repository.JpaRepository
 
 interface FaqRepository : JpaRepository<FaqModel, Int>

@@ -1,4 +1,4 @@
-package com.farmbusiness.controller.request.privacy
+package com.farmbusiness.features.eula.controller.request.privacy
 
 import javax.validation.constraints.NotEmpty
 

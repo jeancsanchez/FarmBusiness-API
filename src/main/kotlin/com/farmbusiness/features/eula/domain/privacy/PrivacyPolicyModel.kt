@@ -1,4 +1,4 @@
-package com.farmbusiness.domain.core.privacy
+package com.farmbusiness.features.eula.domain.privacy
 
 import javax.persistence.*
 

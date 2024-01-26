@@ -1,6 +1,6 @@
 package com.farmbusiness.config.security
 
-import com.farmbusiness.domain.core.user.model.UsersModel
+import com.farmbusiness.features.user.domain.model.UsersModel
 import org.springframework.security.core.GrantedAuthority
 import org.springframework.security.core.authority.SimpleGrantedAuthority
 import org.springframework.security.core.userdetails.UserDetails

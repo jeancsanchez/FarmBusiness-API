@@ -1,4 +1,4 @@
-package com.farmbusiness.domain.core.faq
+package com.farmbusiness.features.eula.domain.faq
 
 import javax.persistence.*
 

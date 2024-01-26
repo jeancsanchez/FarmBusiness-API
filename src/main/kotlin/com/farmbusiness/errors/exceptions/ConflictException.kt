@@ -1,4 +1,4 @@
-package com.farmbusiness.domain.errors.exceptions
+package com.farmbusiness.errors.exceptions
 
 class ConflictException(
     override val message: String,

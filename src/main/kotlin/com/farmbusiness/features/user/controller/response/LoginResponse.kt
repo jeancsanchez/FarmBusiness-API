@@ -1,4 +1,4 @@
-package com.farmbusiness.controller.response
+package com.farmbusiness.features.user.controller.response
 
 import com.farmbusiness.features.user.domain.model.UsersModel
 

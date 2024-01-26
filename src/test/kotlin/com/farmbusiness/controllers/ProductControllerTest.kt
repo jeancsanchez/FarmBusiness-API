@@ -1,11 +1,11 @@
 package com.farmbusiness.controllers
 
-import com.farmbusiness.controller.request.product.ProductRequest
-import com.farmbusiness.domain.core.category.model.CategoryModel
-import com.farmbusiness.domain.core.category.model.SubCategoryModel
-import com.farmbusiness.repository.CategoryRepository
-import com.farmbusiness.repository.ProductRepository
-import com.farmbusiness.repository.SubCategoryRepository
+import com.farmbusiness.features.product.controller.request.ProductRequest
+import com.farmbusiness.features.product.domain.model.categories.CategoryModel
+import com.farmbusiness.features.product.domain.model.categories.SubCategoryModel
+import com.farmbusiness.features.product.repository.categories.CategoryRepository
+import com.farmbusiness.features.product.repository.ProductRepository
+import com.farmbusiness.features.product.repository.categories.SubCategoryRepository
 import com.farmbusiness.utils.extension.set
 import com.farmbusiness.utils.extension.toBRFormat
 import com.fasterxml.jackson.databind.ObjectMapper

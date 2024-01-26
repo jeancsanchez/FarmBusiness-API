@@ -1,11 +1,11 @@
-package com.farmbusiness.controller
+package com.farmbusiness.features.eula.controller
 
-import com.farmbusiness.controller.mappers.toAboutModel
-import com.farmbusiness.controller.mappers.toResponse
-import com.farmbusiness.controller.request.about.PostAboutRequest
-import com.farmbusiness.controller.request.about.PutAboutRequest
-import com.farmbusiness.controller.response.AboutResponse
-import com.farmbusiness.domain.core.about.AboutService
+import com.farmbusiness.features.eula.controller.mappers.toAboutModel
+import com.farmbusiness.features.eula.controller.mappers.toResponse
+import com.farmbusiness.features.eula.controller.request.about.PostAboutRequest
+import com.farmbusiness.features.eula.controller.request.about.PutAboutRequest
+import com.farmbusiness.features.eula.controller.response.AboutResponse
+import com.farmbusiness.features.eula.domain.about.AboutService
 import org.springframework.http.HttpStatus
 import org.springframework.web.bind.annotation.*
 import javax.validation.Valid

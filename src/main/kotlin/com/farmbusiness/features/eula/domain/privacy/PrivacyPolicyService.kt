@@ -1,6 +1,6 @@
-package com.farmbusiness.domain.core.privacy
+package com.farmbusiness.features.eula.domain.privacy
 
-import com.farmbusiness.repository.PrivacyPolicyRepository
+import com.farmbusiness.features.eula.repository.PrivacyPolicyRepository
 import org.springframework.stereotype.Service
 
 @Service

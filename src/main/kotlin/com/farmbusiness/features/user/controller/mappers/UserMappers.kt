@@ -1,6 +1,6 @@
-package com.farmbusiness.controller.mappers
+package com.farmbusiness.features.user.controller.mappers
 
-import com.farmbusiness.controller.request.user.PostUsersRequest
+import com.farmbusiness.features.user.controller.request.PostUsersRequest
 import com.farmbusiness.features.user.domain.model.Role
 import com.farmbusiness.features.user.domain.model.UsersModel
 

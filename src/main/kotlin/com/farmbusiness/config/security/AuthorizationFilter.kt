@@ -1,7 +1,7 @@
 package com.farmbusiness.config.security
 
-import com.farmbusiness.domain.core.user.service.UserDetailsCustomService
-import com.farmbusiness.domain.errors.exceptions.AuthenticationException
+import com.farmbusiness.features.user.domain.service.UserDetailsCustomService
+import com.farmbusiness.features.user.domain.errors.AuthenticationException
 import com.farmbusiness.utils.extension.BEARER
 import com.farmbusiness.utils.extension.sendUnauthorized
 import org.springframework.http.HttpHeaders
@@ -14,9 +14,9 @@ import javax.servlet.http.HttpServletRequest
 import javax.servlet.http.HttpServletResponse
 
 class AuthorizationFilter(
-    authenticationManager: AuthenticationManager,
-    private val userDetails: UserDetailsCustomService,
-    private val jwtUtil: JwtUtil
+        authenticationManager: AuthenticationManager,
+        private val userDetails: UserDetailsCustomService,
+        private val jwtUtil: JwtUtil
 ) : BasicAuthenticationFilter(authenticationManager) {
 
     override fun doFilterInternal(request: HttpServletRequest, response: HttpServletResponse, chain: FilterChain) {

@@ -1,8 +1,8 @@
-package com.farmbusiness.controller.mappers
+package com.farmbusiness.features.eula.controller.mappers
 
-import com.farmbusiness.controller.request.terms.PostTermsOfUseRequest
-import com.farmbusiness.controller.request.terms.PutTermsOfUseRequest
-import com.farmbusiness.controller.response.TermsOfUseResponse
+import com.farmbusiness.features.eula.controller.request.terms.PostTermsOfUseRequest
+import com.farmbusiness.features.eula.controller.request.terms.PutTermsOfUseRequest
+import com.farmbusiness.features.eula.controller.response.TermsOfUseResponse
 import com.farmbusiness.features.eula.domain.terms.TermsOfUseModel
 
 fun TermsOfUseModel.toResponse(): TermsOfUseResponse {

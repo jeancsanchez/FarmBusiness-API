@@ -1,6 +1,6 @@
-package com.farmbusiness.domain.core.product.model
+package com.farmbusiness.features.product.domain.model
 
-import com.farmbusiness.domain.core.category.model.SubCategoryModel
+import com.farmbusiness.features.product.domain.model.categories.SubCategoryModel
 import java.util.*
 import javax.persistence.*
 import javax.validation.constraints.Min
@@ -16,47 +16,47 @@ import javax.validation.constraints.NotBlank
 @Table(name = "products")
 class ProductModel (
 
-    @Id
+        @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     var id: Int? = null,
 
-    @Column
+        @Column
     @NotBlank
     var title: String,
 
-    @Column
+        @Column
     var description: String,
 
-    @Column
+        @Column
     var presentation: String,
 
-    @Column
+        @Column
     @OneToMany(cascade = [CascadeType.ALL], orphanRemoval = true)
     @JoinColumn(name = "product_id")
     var images: List<ProductImageModel>? = emptyList(),
 
-    @ManyToOne
+        @ManyToOne
     @JoinColumn(name = "subcategory_id")
     var subcategory: SubCategoryModel?,
 
-    @Column
+        @Column
     var code: String?,
 
-    @Column
+        @Column
     var createdAt: Date? = Date(),
 
-    @Column
+        @Column
     @NotBlank
     var shelfLife: Date,
 
-    @Column
+        @Column
     @NotBlank
     var batch: String,
 
-    @Column
+        @Column
     var unitPrice: Double,
 
-    @Column
+        @Column
     @Min(value = 1, message = "Pelo menos 1 item deve ser cadastrado")
     var totalItems: Int
 )

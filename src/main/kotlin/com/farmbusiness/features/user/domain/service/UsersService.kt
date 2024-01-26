@@ -1,18 +1,18 @@
-package com.farmbusiness.domain.core.user.service
+package com.farmbusiness.features.user.domain.service
 
-import com.farmbusiness.domain.core.user.model.UsersModel
-import com.farmbusiness.domain.core.user.model.UsersStatus
-import com.farmbusiness.domain.errors.Errors
-import com.farmbusiness.domain.errors.exceptions.ConflictException
-import com.farmbusiness.domain.errors.exceptions.NotFoundException
-import com.farmbusiness.repository.UsersRepository
+import com.farmbusiness.features.user.domain.model.UsersModel
+import com.farmbusiness.features.user.domain.model.UsersStatus
+import com.farmbusiness.errors.Errors
+import com.farmbusiness.errors.exceptions.ConflictException
+import com.farmbusiness.errors.exceptions.NotFoundException
+import com.farmbusiness.features.user.repository.UsersRepository
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder
 import org.springframework.stereotype.Service
 
 @Service
 class UsersService(
-    private val usersRepository: UsersRepository,
-    private val bCrypt: BCryptPasswordEncoder
+        private val usersRepository: UsersRepository,
+        private val bCrypt: BCryptPasswordEncoder
 ) {
 
     fun create(usersModel: UsersModel): UsersModel {

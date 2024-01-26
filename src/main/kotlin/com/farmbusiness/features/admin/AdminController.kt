@@ -1,4 +1,4 @@
-package com.farmbusiness.controller
+package com.farmbusiness.features.admin
 
 import org.springframework.web.bind.annotation.GetMapping
 import org.springframework.web.bind.annotation.RequestMapping

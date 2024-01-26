@@ -1,6 +1,6 @@
-package com.farmbusiness.repository
+package com.farmbusiness.features.eula.repository
 
-import com.farmbusiness.domain.core.terms.TermsOfUseModel
+import com.farmbusiness.features.eula.domain.terms.TermsOfUseModel
 import org.springframework.data.jpa.repository.JpaRepository
 
 interface TermsOfUseRepository : JpaRepository<TermsOfUseModel, Int> {
