@@ -23,7 +23,7 @@ class SubCategoryModel(
 
         @ManyToOne
         @JoinColumn(name = "category_id")
-        var category: CategoryModel,
+        var category: CategoryModel?,
 
         @OneToMany(cascade = [CascadeType.ALL], orphanRemoval = true)
         @JoinColumn(name = "subcategory_id")
