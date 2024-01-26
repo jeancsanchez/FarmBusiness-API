@@ -1,6 +1,6 @@
 package com.farmbusiness.controller.mappers.page
 
-import com.farmbusiness.controller.response.PageResponse
+import com.farmbusiness.features.eula.controller.response.PageResponse
 import org.springframework.data.domain.Page
 
 /**

@@ -3,7 +3,7 @@ package com.farmbusiness.controller.mappers
 import com.farmbusiness.controller.request.about.PostAboutRequest
 import com.farmbusiness.controller.request.about.PutAboutRequest
 import com.farmbusiness.controller.response.AboutResponse
-import com.farmbusiness.domain.core.about.AboutModel
+import com.farmbusiness.features.eula.domain.about.AboutModel
 
 fun AboutModel.toResponse(): AboutResponse {
     return AboutResponse(

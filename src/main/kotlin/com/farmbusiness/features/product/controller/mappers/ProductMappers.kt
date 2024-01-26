@@ -2,7 +2,7 @@ package com.farmbusiness.controller.mappers
 
 import com.farmbusiness.controller.request.product.ProductRequest
 import com.farmbusiness.controller.response.ProductResponse
-import com.farmbusiness.domain.core.product.model.ProductModel
+import com.farmbusiness.features.product.domain.model.ProductModel
 import com.farmbusiness.utils.extension.toDate
 
 /**

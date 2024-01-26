@@ -3,7 +3,7 @@ package com.farmbusiness.controller.mappers
 import com.farmbusiness.controller.request.terms.PostTermsOfUseRequest
 import com.farmbusiness.controller.request.terms.PutTermsOfUseRequest
 import com.farmbusiness.controller.response.TermsOfUseResponse
-import com.farmbusiness.domain.core.terms.TermsOfUseModel
+import com.farmbusiness.features.eula.domain.terms.TermsOfUseModel
 
 fun TermsOfUseModel.toResponse(): TermsOfUseResponse {
     return TermsOfUseResponse(

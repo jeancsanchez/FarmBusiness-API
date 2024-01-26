@@ -1,8 +1,8 @@
 package com.farmbusiness.controller.mappers
 
 import com.farmbusiness.controller.request.user.PostUsersRequest
-import com.farmbusiness.domain.core.user.model.Role
-import com.farmbusiness.domain.core.user.model.UsersModel
+import com.farmbusiness.features.user.domain.model.Role
+import com.farmbusiness.features.user.domain.model.UsersModel
 
 fun PostUsersRequest.toUsersModel(): UsersModel {
     return UsersModel(

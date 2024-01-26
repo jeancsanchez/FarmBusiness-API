@@ -3,7 +3,7 @@ package com.farmbusiness.controller.mappers
 import com.farmbusiness.controller.request.faq.PostFaqRequest
 import com.farmbusiness.controller.request.faq.PutFaqRequest
 import com.farmbusiness.controller.response.FaqResponse
-import com.farmbusiness.domain.core.faq.FaqModel
+import com.farmbusiness.features.eula.domain.faq.FaqModel
 
 fun FaqModel.toResponse(): FaqResponse {
     return FaqResponse(

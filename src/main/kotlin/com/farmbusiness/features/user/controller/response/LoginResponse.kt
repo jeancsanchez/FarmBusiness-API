@@ -1,6 +1,6 @@
 package com.farmbusiness.controller.response
 
-import com.farmbusiness.domain.core.user.model.UsersModel
+import com.farmbusiness.features.user.domain.model.UsersModel
 
 data class LoginResponse(
     val token: String?,

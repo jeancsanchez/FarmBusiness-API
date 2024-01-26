@@ -3,7 +3,7 @@ package com.farmbusiness.controller.mappers
 import com.farmbusiness.controller.request.privacy.PostPrivacyPolicyRequest
 import com.farmbusiness.controller.request.privacy.PutPrivacyPolicyRequest
 import com.farmbusiness.controller.response.PrivacyPolicyResponse
-import com.farmbusiness.domain.core.privacy.PrivacyPolicyModel
+import com.farmbusiness.features.eula.domain.privacy.PrivacyPolicyModel
 
 
 fun PrivacyPolicyModel.toResponse(): PrivacyPolicyResponse {

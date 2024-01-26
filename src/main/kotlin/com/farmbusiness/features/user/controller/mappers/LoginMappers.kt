@@ -1,7 +1,7 @@
 package com.farmbusiness.controller.mappers
 
 import com.farmbusiness.controller.response.LoginResponse
-import com.farmbusiness.domain.core.user.model.UsersModel
+import com.farmbusiness.features.user.domain.model.UsersModel
 
 /**
  * @author @jeancsanchez
