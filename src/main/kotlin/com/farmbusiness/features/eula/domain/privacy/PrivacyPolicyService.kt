@@ -5,7 +5,7 @@ import org.springframework.stereotype.Service
 
 @Service
 class PrivacyPolicyService(
-    private val privacyPolicyRepository: PrivacyPolicyRepository
+        private val privacyPolicyRepository: PrivacyPolicyRepository
 ) {
 
     fun create(privacyPolicy: PrivacyPolicyModel) {

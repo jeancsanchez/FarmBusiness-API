@@ -14,18 +14,18 @@ import javax.validation.constraints.NotBlank
 class SubCategoryModel(
 
         @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    var id: Int? = null,
+        @GeneratedValue(strategy = GenerationType.IDENTITY)
+        var id: Int? = null,
 
         @Column
-    @NotBlank
-    var title: String,
+        @NotBlank
+        var title: String,
 
         @ManyToOne
-    @JoinColumn(name = "category_id")
-    var category: CategoryModel,
+        @JoinColumn(name = "category_id")
+        var category: CategoryModel,
 
         @OneToMany(cascade = [CascadeType.ALL], orphanRemoval = true)
-    @JoinColumn(name = "subcategory_id")
-    val products: MutableList<ProductModel> = mutableListOf()
+        @JoinColumn(name = "subcategory_id")
+        val products: MutableList<ProductModel> = mutableListOf()
 )

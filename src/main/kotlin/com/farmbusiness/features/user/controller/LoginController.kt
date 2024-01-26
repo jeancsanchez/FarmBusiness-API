@@ -24,24 +24,24 @@ import javax.validation.Valid
 @RestController
 @RequestMapping
 class LoginController(
-    private val loginService: LoginService
+        private val loginService: LoginService
 ) {
     @PostMapping("/login")
     fun login(@RequestBody @Valid body: LoginRequest): ResponseEntity<LoginResponse> {
         loginService
-            .login(body.emailOrCpfOrCnpj, body.password)
-            ?.toLoginResponse()
-            ?.let { data ->
-                return ResponseEntity
-                    .status(HttpStatus.OK)
-                    .contentType(MediaType.parseMediaType(MediaType.APPLICATION_JSON_VALUE))
-                    .header(HttpHeaders.AUTHORIZATION, "$BEARER ${data.token}")
-                    .body(data)
-            }
-            ?: let {
-                return ResponseEntity
-                    .status(HttpStatus.UNAUTHORIZED)
-                    .build()
-            }
+                .login(body.emailOrCpfOrCnpj, body.password)
+                ?.toLoginResponse()
+                ?.let { data ->
+                    return ResponseEntity
+                            .status(HttpStatus.OK)
+                            .contentType(MediaType.parseMediaType(MediaType.APPLICATION_JSON_VALUE))
+                            .header(HttpHeaders.AUTHORIZATION, "$BEARER ${data.token}")
+                            .body(data)
+                }
+                ?: let {
+                    return ResponseEntity
+                            .status(HttpStatus.UNAUTHORIZED)
+                            .build()
+                }
     }
 }

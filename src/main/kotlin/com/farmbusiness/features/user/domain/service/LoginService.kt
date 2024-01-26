@@ -2,9 +2,9 @@ package com.farmbusiness.features.user.domain.service
 
 import com.farmbusiness.config.security.JwtUtil
 import com.farmbusiness.config.security.UserCustomDetails
-import com.farmbusiness.features.user.domain.model.UsersModel
 import com.farmbusiness.errors.Errors
 import com.farmbusiness.features.user.domain.errors.AuthenticationException
+import com.farmbusiness.features.user.domain.model.UsersModel
 import com.farmbusiness.features.user.repository.UsersRepository
 import org.springframework.security.authentication.AuthenticationManager
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken
@@ -29,15 +29,15 @@ class LoginService(
         try {
             val id = when {
                 login
-                    .replace(".", "")
-                    .replace("-", "")
-                    .length == 11 -> usersRepository.findByCpf(login)?.id
+                        .replace(".", "")
+                        .replace("-", "")
+                        .length == 11 -> usersRepository.findByCpf(login)?.id
 
                 login
-                    .replace(".", "")
-                    .replace("-", "")
-                    .replace("/", "")
-                    .length == 14 -> usersRepository.findByCnpj(login)?.id
+                        .replace(".", "")
+                        .replace("-", "")
+                        .replace("/", "")
+                        .length == 14 -> usersRepository.findByCnpj(login)?.id
 
                 else -> usersRepository.findByEmail(login)?.id
             }
@@ -51,7 +51,7 @@ class LoginService(
     }
 
     private fun successfulAuthentication(
-        authResult: Authentication
+            authResult: Authentication
     ): Pair<String?, UsersModel?> {
         val id = (authResult.principal as UserCustomDetails).id
         val user = id?.let { usersRepository.findById(it).get() }
@@ -60,8 +60,8 @@ class LoginService(
         }
 
         return Pair(
-            first = token,
-            second = user?.apply { password = "" }
+                first = token,
+                second = user?.apply { password = "" }
         )
     }
 }

@@ -5,7 +5,7 @@ import org.springframework.stereotype.Service
 
 @Service
 class AboutService(
-    private val aboutRepository: AboutRepository
+        private val aboutRepository: AboutRepository
 ) {
 
     fun create(about: AboutModel) {

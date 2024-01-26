@@ -7,19 +7,19 @@ import com.farmbusiness.features.eula.domain.about.AboutModel
 
 fun AboutModel.toResponse(): AboutResponse {
     return AboutResponse(
-        id = this.id,
-        about = this.about
+            id = this.id,
+            about = this.about
     )
 }
 
 fun PostAboutRequest.toAboutModel(): AboutModel {
     return AboutModel(
-        about = this.about
+            about = this.about
     )
 }
 
 fun PutAboutRequest.toAboutModel(): AboutModel {
     return AboutModel(
-        about = this.about
+            about = this.about
     )
 }

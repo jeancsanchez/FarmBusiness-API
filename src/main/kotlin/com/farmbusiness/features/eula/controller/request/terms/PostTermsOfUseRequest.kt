@@ -2,8 +2,8 @@ package com.farmbusiness.features.eula.controller.request.terms
 
 import javax.validation.constraints.NotEmpty
 
-data class PostTermsOfUseRequest (
+data class PostTermsOfUseRequest(
 
-    @field:NotEmpty(message = "Termos de Uso deve ser informado")
-    var termsOfUse: String
+        @field:NotEmpty(message = "Termos de Uso deve ser informado")
+        var termsOfUse: String
 )

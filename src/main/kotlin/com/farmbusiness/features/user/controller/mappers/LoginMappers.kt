@@ -10,7 +10,7 @@ import com.farmbusiness.features.user.domain.model.UsersModel
  */
 
 fun Pair<String?, UsersModel?>.toLoginResponse(): LoginResponse =
-    LoginResponse(
-        token = first,
-        userData = second
-    )
+        LoginResponse(
+                token = first,
+                userData = second
+        )

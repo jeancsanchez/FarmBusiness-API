@@ -5,7 +5,7 @@ import org.springframework.stereotype.Service
 
 @Service
 class TermsOfUseService(
-    private val termsOfUseRepository: TermsOfUseRepository
+        private val termsOfUseRepository: TermsOfUseRepository
 ) {
 
     fun create(termsOfUse: TermsOfUseModel) {

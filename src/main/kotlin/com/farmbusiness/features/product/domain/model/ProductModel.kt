@@ -14,49 +14,49 @@ import javax.validation.constraints.NotBlank
 @Suppress("SpellCheckingInspection")
 @Entity
 @Table(name = "products")
-class ProductModel (
+class ProductModel(
 
         @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    var id: Int? = null,
+        @GeneratedValue(strategy = GenerationType.IDENTITY)
+        var id: Int? = null,
 
         @Column
-    @NotBlank
-    var title: String,
+        @NotBlank
+        var title: String,
 
         @Column
-    var description: String,
+        var description: String,
 
         @Column
-    var presentation: String,
+        var presentation: String,
 
         @Column
-    @OneToMany(cascade = [CascadeType.ALL], orphanRemoval = true)
-    @JoinColumn(name = "product_id")
-    var images: List<ProductImageModel>? = emptyList(),
+        @OneToMany(cascade = [CascadeType.ALL], orphanRemoval = true)
+        @JoinColumn(name = "product_id")
+        var images: List<ProductImageModel>? = emptyList(),
 
         @ManyToOne
-    @JoinColumn(name = "subcategory_id")
-    var subcategory: SubCategoryModel?,
+        @JoinColumn(name = "subcategory_id")
+        var subcategory: SubCategoryModel?,
 
         @Column
-    var code: String?,
+        var code: String?,
 
         @Column
-    var createdAt: Date? = Date(),
+        var createdAt: Date? = Date(),
 
         @Column
-    @NotBlank
-    var shelfLife: Date,
+        @NotBlank
+        var shelfLife: Date,
 
         @Column
-    @NotBlank
-    var batch: String,
+        @NotBlank
+        var batch: String,
 
         @Column
-    var unitPrice: Double,
+        var unitPrice: Double,
 
         @Column
-    @Min(value = 1, message = "Pelo menos 1 item deve ser cadastrado")
-    var totalItems: Int
+        @Min(value = 1, message = "Pelo menos 1 item deve ser cadastrado")
+        var totalItems: Int
 )

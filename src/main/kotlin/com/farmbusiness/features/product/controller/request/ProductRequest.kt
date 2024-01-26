@@ -9,16 +9,16 @@ import javax.validation.constraints.NotNull
  */
 
 data class ProductRequest(
-    val id: Int? = null,
-    @NotNull(message = "title is required") val title: String,
-    val description: String,
-    val presentation: String,
-    @NotNull(message = "Category is required") val categoryId: Int,
-    @NotNull(message = "Subcategory is required") val subCategoryId: Int,
-    val images: List<String>?, // base64
-    val code: String?,
-    val shelfLifeMillis: Long,
-    val batch: String,
-    val unitPrice: Double,
-    val totalItems: Int
+        val id: Int? = null,
+        @NotNull(message = "title is required") val title: String,
+        val description: String,
+        val presentation: String,
+        @NotNull(message = "Category is required") val categoryId: Int,
+        @NotNull(message = "Subcategory is required") val subCategoryId: Int,
+        val images: List<String>?, // base64
+        val code: String?,
+        val shelfLifeMillis: Long,
+        val batch: String,
+        val unitPrice: Double,
+        val totalItems: Int
 )

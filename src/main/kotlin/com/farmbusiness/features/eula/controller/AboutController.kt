@@ -13,7 +13,7 @@ import javax.validation.Valid
 @RestController
 @RequestMapping("about")
 class AboutController(
-    private val aboutService: AboutService
+        private val aboutService: AboutService
 ) {
 
     @PostMapping

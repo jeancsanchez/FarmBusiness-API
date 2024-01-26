@@ -12,29 +12,29 @@ import com.farmbusiness.utils.extension.toDate
  */
 
 fun ProductRequest.toModel(): ProductModel =
-    ProductModel(
-        id = id,
-        title = title,
-        description = description,
-        presentation = presentation,
-        code = code,
-        shelfLife = shelfLifeMillis.toDate(),
-        batch = batch,
-        unitPrice = unitPrice,
-        totalItems = totalItems,
-        subcategory = null
-    )
+        ProductModel(
+                id = id,
+                title = title,
+                description = description,
+                presentation = presentation,
+                code = code,
+                shelfLife = shelfLifeMillis.toDate(),
+                batch = batch,
+                unitPrice = unitPrice,
+                totalItems = totalItems,
+                subcategory = null
+        )
 
 fun ProductModel.toResponse(): ProductResponse =
-    ProductResponse(
-        id = id!!,
-        title = title,
-        description = description,
-        presentation = presentation,
-        code = code,
-        images = images?.map { it.imageUrl } ?: emptyList(),
-        batch = batch,
-        shelfLifeMillis = shelfLife.time,
-        unitPrice = unitPrice,
-        totalItems = totalItems
-    )
+        ProductResponse(
+                id = id!!,
+                title = title,
+                description = description,
+                presentation = presentation,
+                code = code,
+                images = images?.map { it.imageUrl } ?: emptyList(),
+                batch = batch,
+                shelfLifeMillis = shelfLife.time,
+                unitPrice = unitPrice,
+                totalItems = totalItems
+        )

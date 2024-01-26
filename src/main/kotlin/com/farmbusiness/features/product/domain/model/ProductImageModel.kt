@@ -13,11 +13,11 @@ import javax.validation.constraints.NotBlank
 @Table(name = "product_images")
 class ProductImageModel(
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    var id: Int? = null,
+        @Id
+        @GeneratedValue(strategy = GenerationType.IDENTITY)
+        var id: Int? = null,
 
-    @Column
-    @NotBlank
-    var imageUrl: String
+        @Column
+        @NotBlank
+        var imageUrl: String
 )

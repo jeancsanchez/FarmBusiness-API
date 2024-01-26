@@ -13,7 +13,7 @@ import javax.validation.Valid
 @RestController
 @RequestMapping("terms-of-use")
 class TermsOfUseController(
-    private val termsOfUseService: TermsOfUseService
+        private val termsOfUseService: TermsOfUseService
 ) {
 
     @PostMapping

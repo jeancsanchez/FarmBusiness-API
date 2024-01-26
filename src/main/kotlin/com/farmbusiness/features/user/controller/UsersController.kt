@@ -15,7 +15,7 @@ import javax.validation.Valid
 @RequestMapping("users")
 @EnableGlobalMethodSecurity(prePostEnabled = true)
 class UsersController(
-    private val usersService: UsersService
+        private val usersService: UsersService
 ) {
 
     @PostMapping
@@ -24,8 +24,8 @@ class UsersController(
         val model = usersService.create(request.toUsersModel())
 
         return ResponseEntity
-            .status(HttpStatus.CREATED)
-            .body(model)
+                .status(HttpStatus.CREATED)
+                .body(model)
     }
 
     @GetMapping("/{id}")

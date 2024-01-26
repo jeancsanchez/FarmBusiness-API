@@ -9,10 +9,10 @@ import org.springframework.stereotype.Service
 
 @Service
 class UserDetailsCustomService(
-    private val usersRepository: UsersRepository
-): UserDetailsService {
+        private val usersRepository: UsersRepository
+) : UserDetailsService {
     override fun loadUserByUsername(id: String): UserDetails {
-        val user = usersRepository.findById(id.toInt()).orElseThrow { AuthenticationException("Usuário não encontrado", "999" ) }
+        val user = usersRepository.findById(id.toInt()).orElseThrow { AuthenticationException("Usuário não encontrado", "999") }
         return UserCustomDetails(user)
     }
 }

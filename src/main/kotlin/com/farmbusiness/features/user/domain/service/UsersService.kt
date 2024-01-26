@@ -1,10 +1,10 @@
 package com.farmbusiness.features.user.domain.service
 
-import com.farmbusiness.features.user.domain.model.UsersModel
-import com.farmbusiness.features.user.domain.model.UsersStatus
 import com.farmbusiness.errors.Errors
 import com.farmbusiness.errors.exceptions.ConflictException
 import com.farmbusiness.errors.exceptions.NotFoundException
+import com.farmbusiness.features.user.domain.model.UsersModel
+import com.farmbusiness.features.user.domain.model.UsersStatus
 import com.farmbusiness.features.user.repository.UsersRepository
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder
 import org.springframework.stereotype.Service
@@ -54,13 +54,13 @@ class UsersService(
 
     fun findById(id: Int): UsersModel {
         return usersRepository.findById(id)
-            .orElseThrow { NotFoundException(Errors.ML201.message.format(id), Errors.ML201.code) }
+                .orElseThrow { NotFoundException(Errors.ML201.message.format(id), Errors.ML201.code) }
     }
 
     private fun throwUserAlreadyExists(id: String) {
         throw ConflictException(
-            message = Errors.ML205.message.format(id),
-            errorCode = Errors.ML205.code,
+                message = Errors.ML205.message.format(id),
+                errorCode = Errors.ML205.code,
         )
     }
 }
