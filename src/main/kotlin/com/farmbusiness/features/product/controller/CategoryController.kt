@@ -10,7 +10,6 @@ import org.springframework.web.bind.annotation.PostMapping
 import org.springframework.web.bind.annotation.RequestBody
 import org.springframework.web.bind.annotation.RequestMapping
 import org.springframework.web.bind.annotation.RestController
-import javax.servlet.http.HttpServletRequest
 import javax.validation.Valid
 
 /**
@@ -25,10 +24,7 @@ class CategoryController(
         private val categoryService: CategoryService
 ) {
     @PostMapping
-    fun create(
-            @Valid @RequestBody bodyRequest: CategoryRequest,
-            request: HttpServletRequest,
-    ): ResponseEntity<CategoryModel> {
+    fun create(@Valid @RequestBody bodyRequest: CategoryRequest): ResponseEntity<CategoryModel> {
         val entity = categoryService.create(categoryModel = bodyRequest.toModel())
 
         return ResponseEntity

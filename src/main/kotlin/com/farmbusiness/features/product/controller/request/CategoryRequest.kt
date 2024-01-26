@@ -10,14 +10,13 @@ import javax.validation.constraints.NotNull
  */
 
 data class CategoryRequest(
-        @NotNull(message = "title is required") val title: String,
+        @field:NotNull(message = "title is required") val title: String,
 
-        @NotNull(message = "At least one subcategory is needed.")
-        @NotEmpty(message = "At least one subcategory is needed.")
+        @field:NotEmpty(message = "At least one subcategory is needed.")
         val subCategories: List<SubCategoryRequest>
 )
 
 
 data class SubCategoryRequest(
-        @NotNull(message = "title is required") val title: String
+        @field:NotNull(message = "title is required") val title: String
 )
