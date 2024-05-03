@@ -1,7 +1,0 @@
-CREATE TABLE banners (
-   id INT AUTO_INCREMENT NOT NULL,
-   image VARCHAR(255) NULL,
-   route VARCHAR(255) NULL,
-   deeplink VARCHAR(255) NULL,
-   CONSTRAINT pk_banners PRIMARY KEY (id)
-);

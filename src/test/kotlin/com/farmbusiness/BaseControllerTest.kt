@@ -20,6 +20,7 @@ import org.springframework.test.context.web.WebAppConfiguration
 import org.springframework.test.web.servlet.MockMvc
 import org.springframework.test.web.servlet.request.MockHttpServletRequestBuilder
 import org.springframework.test.web.servlet.setup.MockMvcBuilders
+import org.springframework.transaction.annotation.Transactional
 import org.springframework.web.context.WebApplicationContext
 import java.util.*
 
@@ -61,20 +62,27 @@ class BaseControllerTest {
     }
 
 
+    @Transactional
     protected fun insertNewCategoryIntoDatabase(name: String): CategoryModel {
         return categoryRepository.save(CategoryModel(title = name))
     }
 
+    @Transactional
     protected fun insertNewSubCategoryIntoDatabase(name: String, categoryModel: CategoryModel): SubCategoryModel {
         return subCategoryRepository.save(SubCategoryModel(title = name, category = categoryModel))
     }
 
-    protected fun insertNewProductIntoDatabase(name: String, subCategoryModel: SubCategoryModel): ProductModel {
+    @Transactional
+    protected fun insertNewProductIntoDatabase(name: String): ProductModel {
+        val category = insertNewCategoryIntoDatabase(name = "Some Category")
+        val subCategory = insertNewSubCategoryIntoDatabase(name = "Some Category", categoryModel = category)
+
         return productRepository.save(
                 ProductModel(
                         title = name,
                         description = "some description",
                         presentation = "some presentation",
+                        rating = 3.2f,
                         images = listOf(
                                 ProductImageModel(imageUrl = "someurl")
                         ),
@@ -84,9 +92,8 @@ class BaseControllerTest {
                         batch = "FE1213435",
                         unitPrice = 3.4,
                         totalItems = 2,
-                        subcategory = subCategoryModel
+                        subcategory = subCategory
                 )
         )
     }
-
 }

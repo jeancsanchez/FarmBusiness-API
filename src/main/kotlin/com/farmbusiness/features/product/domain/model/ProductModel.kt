@@ -1,8 +1,18 @@
 package com.farmbusiness.features.product.domain.model
 
+import com.farmbusiness.features.home.domain.offer.OfferProductModel
 import com.farmbusiness.features.product.domain.model.categories.SubCategoryModel
 import java.util.*
-import javax.persistence.*
+import javax.persistence.CascadeType
+import javax.persistence.Column
+import javax.persistence.Entity
+import javax.persistence.GeneratedValue
+import javax.persistence.GenerationType
+import javax.persistence.Id
+import javax.persistence.JoinColumn
+import javax.persistence.ManyToOne
+import javax.persistence.OneToMany
+import javax.persistence.Table
 import javax.validation.constraints.Min
 import javax.validation.constraints.NotBlank
 
@@ -53,10 +63,16 @@ class ProductModel(
         @NotBlank
         var batch: String,
 
+        @Column(name = "rating", nullable = false)
+        var rating: Float? = null,
+
         @Column
         var unitPrice: Double,
 
         @Column
         @Min(value = 1, message = "Pelo menos 1 item deve ser cadastrado")
-        var totalItems: Int
+        var totalItems: Int,
+
+        @OneToMany(mappedBy = "product", cascade = [CascadeType.ALL])
+        val offers: MutableList<OfferProductModel> = mutableListOf()
 )
